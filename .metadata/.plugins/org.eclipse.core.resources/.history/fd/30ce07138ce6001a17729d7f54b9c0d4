@@ -1,0 +1,8 @@
+package circ;
+
+public class AreaCircTeste {
+
+	public static void main(String[] args) {
+		
+	}
+}

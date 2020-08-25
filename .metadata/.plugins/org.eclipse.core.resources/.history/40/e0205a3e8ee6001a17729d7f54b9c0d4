@@ -1,0 +1,14 @@
+package classe;
+
+public class ProdutoStatic {
+
+	String nome;
+	Double preco;
+	static Double desconto = 0.25;
+	
+	Double precoComdescontoPadrao() {
+		return preco * (1 - desconto);
+	}
+	
+	Double 
+}

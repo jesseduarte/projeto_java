@@ -1,0 +1,10 @@
+package classe;
+
+public class ProdutoStatic {
+
+	String nome;
+	Double preco;
+	static Double desconto;
+	
+	
+}

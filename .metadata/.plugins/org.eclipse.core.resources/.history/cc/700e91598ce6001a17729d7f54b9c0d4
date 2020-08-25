@@ -1,0 +1,19 @@
+package circ;
+
+public class AreaCirc {
+	
+	Double raio;
+	static Double PI = 3.14;
+	
+	AreaCirc(Double raioInicial) {
+		raio = raioInicial;
+	}
+	
+	Double calcularArea() {
+		return PI * Math.pow(raio,2);
+	}
+	
+	Double comprimentoCirc() {
+		return 2 * PI * raio;
+	}
+}
