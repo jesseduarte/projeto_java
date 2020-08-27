@@ -1,0 +1,13 @@
+package oo.composicao;
+
+public class CompraItemTeste {
+
+	public static void main(String[] args) {
+		
+		Item item1 = new Item("Fone de ouvido", 2, 10.00);
+		Item item2 = new Item("Camisa", 1, 50.00);
+		Item item3 = new Item("Short", 2, 60.00);
+		
+		
+	}
+}

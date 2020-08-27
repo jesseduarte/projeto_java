@@ -1,0 +1,12 @@
+package oo.composicao;
+
+import java.util.ArrayList;
+
+//1 COMPRA pode ter varios ITENS. relacao 1:N
+
+public class Compra {
+
+	String nomeCliente;
+	ArrayList<Item> itens = new ArrayList<>();
+	
+}

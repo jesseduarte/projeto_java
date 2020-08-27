@@ -1,0 +1,34 @@
+package colecoes;
+
+import java.util.HashSet;
+
+//Usando o HashSet da interface SET.
+
+public class ConjuntoBaguncado {
+
+	public static void main(String[] args) {
+		
+		HashSet conjunto = new HashSet();
+		
+		conjunto.add(1.2);
+		conjunto.add(true);
+		conjunto.add("Teste");
+		conjunto.add(1);
+		conjunto.add('x');
+		
+		System.out.println(conjunto.size());
+		
+		conjunto.add("Teste");
+		
+		System.out.println(conjunto.size()); //nao aceita repeticao
+		
+		System.out.println(conjunto.remove("Teste"));
+		System.out.println(conjunto.remove('x'));
+		
+		System.out.println(conjunto.size());
+		
+		System.out.println(conjunto.contains('x'));
+		System.out.println(conjunto.contains('));
+		
+	}
+}

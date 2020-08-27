@@ -1,0 +1,7 @@
+package restaurante;
+
+public class Pessoa {
+
+	String nome;
+	Double peso;
+}

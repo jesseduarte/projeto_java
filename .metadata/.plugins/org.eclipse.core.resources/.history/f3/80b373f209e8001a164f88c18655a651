@@ -1,0 +1,10 @@
+package oo.composicao;
+
+public class CursoAlunoTeste {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

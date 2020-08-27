@@ -1,0 +1,32 @@
+package colecoes;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Fila {
+
+	public static void main(String[] args) {
+		
+		Queue<String> filaBanco = new LinkedList<>();
+		
+		//Diferença do add() pro offer(). quando a fila chega no limite: add() = lança uma excecao. offer() = retorna um false
+		
+		filaBanco.add("Ana");
+		filaBanco.offer("Bia");
+		filaBanco.add("Carlos");
+		filaBanco.offer("Daniel");
+		filaBanco.add("Rafaela");
+		filaBanco.offer("Gui");
+		
+		//diferenca do peek() pro element(). Quando a fila estiver vazia: element() = lança uma excecao. peek() = retorna null.
+		
+		System.out.println(filaBanco.peek()); //retorna o 1° elemento da fila
+		System.out.println(filaBanco.element()); //retorna o 1° elemento da fila
+		
+		//file.size()
+		//file.clear()
+		//fila.isEmpty()
+		
+		
+	}
+}

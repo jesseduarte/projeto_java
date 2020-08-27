@@ -1,0 +1,29 @@
+package classe;
+
+//CAPITULO SOBRE EQUALS E HASHCODE!
+
+public class Usuario {
+
+	String nome;
+	String email;
+	
+	public boolean equals(Object objeto) {
+		
+		Usuario outro = (Usuario) objeto;
+		return outro.nome == this.nome;
+	}
+}
+
+/* Modo de implementar a igualdade de objeto:
+ 
+ public boolean equals(Object objeto) {
+		
+		if(objeto instanceof Usuario) { //objeto(param) é a instancia de Usuario?
+		
+			Usuario outro = (Usuario) objeto; //converti Object para Usuario
+			return super.equals(objeto);
+		} else {
+			return false;
+		}
+	}
+ */

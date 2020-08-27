@@ -1,0 +1,7 @@
+package oo.composicao;
+
+//1 COMPRA pode ter varios ITENS. relacao 1:N
+
+public class Compra {
+
+}

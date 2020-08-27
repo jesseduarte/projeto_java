@@ -1,0 +1,26 @@
+package oo.composicao;
+
+import java.util.ArrayList;
+
+//Aula de composicao N:N
+
+public class Aluno {
+	
+	final String nome;
+	//A lista constante(final) quer dizer que a variavel "cursos" nao pode referenciar para outra lista. Os itens dentro dela ficam variaveis.
+	final ArrayList<Curso> cursos = new ArrayList<>(); //1:N
+	
+	Aluno(String nome) {
+		this.nome = nome;
+	}
+	
+	void adicionarCurso(Curso curso) {
+		this.cursos.add(curso);
+		curso.alunos.add(this);
+	}
+	
+	@Override
+	public String toString() {
+		return aluno; 
+	}
+}

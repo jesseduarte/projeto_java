@@ -1,0 +1,25 @@
+package colecoes;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Fila {
+
+	public static void main(String[] args) {
+		
+		Queue<String> filaBanco = new LinkedList<>();
+		
+		//Diferença do add() pro offer(). quando a fila chega no limite: add() = retorna um erro. offer() = retorna um false
+		
+		filaBanco.add("Ana");
+		filaBanco.offer("Bia");
+		filaBanco.add("Carlos");
+		filaBanco.offer("Daniel");
+		filaBanco.add("Rafaela");
+		filaBanco.offer("Gui");
+		
+		System.out.println(filaBanco.peek()); //retorna o 1° elemento da fila
+		System.out.println(filaBanco.element());
+		
+	}
+}

@@ -1,0 +1,15 @@
+package classe;
+
+//CAPITULO SOBRE EQUALS E HASHCODE!
+
+public class Usuario {
+
+	String nome;
+	String email;
+	
+	@Override
+	public boolean equals(Usuario usu) {
+		
+		return super.equals(usu);
+	}
+}

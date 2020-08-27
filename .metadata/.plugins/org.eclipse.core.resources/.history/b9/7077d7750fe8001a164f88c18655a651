@@ -1,0 +1,14 @@
+package oo.composicao;
+
+public class CompraItemTeste {
+
+	public static void main(String[] args) {
+		
+		Compra compra1 = new Compra("João");
+		compra1.itens.add(new Item("Caneta", 20, 7.45));
+		compra1.itens.add(new Item("Borracha", 12, 3.89));
+		compra1.itens.add(new Item("Caderno", 3, 18.79));
+		
+		System.out.println(compra1.itens.size());
+	}
+}

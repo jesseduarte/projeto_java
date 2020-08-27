@@ -1,0 +1,19 @@
+package oo.composicao;
+
+import java.util.ArrayList;
+
+//Aula de composicao N:N
+
+public class Aluno {
+	
+	final String nome;
+	ArrayList<Curso> cursos = new ArrayList<>(); //1:N
+	
+	void adicionarCurso(Curso curso) {
+		this.cursos.add(curso);
+		curso.alunos.add(this);
+	}
+	
+	
+
+}

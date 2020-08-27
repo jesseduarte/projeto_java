@@ -1,0 +1,7 @@
+package classe;
+
+//CAPITULO SOBRE EQUALS E HASHCODE!
+
+public class Usuario {
+
+}
