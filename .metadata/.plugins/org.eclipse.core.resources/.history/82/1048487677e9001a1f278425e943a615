@@ -1,0 +1,13 @@
+package circ;
+
+public class AreaCirculoTeste {
+	
+	public static void main(String[] args) {
+		
+		AreaCirc c1 = new AreaCirc();
+		System.out.println(c1.areaCirculo(2));
+		System.out.println(c1.comprimentoCirculo(3));
+		
+	}
+
+}

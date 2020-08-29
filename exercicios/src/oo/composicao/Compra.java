@@ -13,13 +13,12 @@ public class Compra {
 		this.cliente = cliente;
 	}
 	
-	double obterValorTotal() {
+	double obterValortotal(){
 		
 		double total = 0;
-		for(Item item: itens) {
-			total += item.quantidade * item.preco;
+		for(Item it: itens) {
+			total += it.quantidade * it.preco;
 		}
-		
 		return total;
 	}
 }

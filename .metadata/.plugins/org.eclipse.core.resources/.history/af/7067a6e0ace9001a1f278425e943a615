@@ -1,0 +1,13 @@
+package oo.heranca.desafio;
+
+public class Carro {
+
+	private int velocidadeAtual;
+	
+	void setVelocidadeAtual(int velocidadeAtual) {
+		
+	}
+	
+	
+	
+}

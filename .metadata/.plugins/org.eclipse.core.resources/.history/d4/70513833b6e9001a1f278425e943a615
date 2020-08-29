@@ -1,0 +1,10 @@
+package oo.heranca.desafio;
+
+//Uma classe pode herdar de varias interfaces.
+//Metodos nao tem corpo.
+
+public interface Esportivo {
+
+	void ligarTurbo();
+	void desligarTurbo();
+}

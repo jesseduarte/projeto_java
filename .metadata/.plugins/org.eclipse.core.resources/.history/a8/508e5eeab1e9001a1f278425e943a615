@@ -1,0 +1,15 @@
+package oo.heranca.desafio;
+
+public class Ferrari extends Carro {
+
+	Ferrari(int velocidadeAtual) {
+		super(velocidadeAtual);
+	}
+
+	@Override
+	public void acelerar() {
+		if(this.velocidadeAtual >= 0) {
+			this.velocidadeAtual += 15;
+		}
+	}
+}

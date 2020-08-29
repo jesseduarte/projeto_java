@@ -2,6 +2,8 @@ package classe;
 
 import java.util.Date;
 
+//Usa a classe Usuario.java
+
 public class Equals {
 	
 	 public static void main(String[] args) {

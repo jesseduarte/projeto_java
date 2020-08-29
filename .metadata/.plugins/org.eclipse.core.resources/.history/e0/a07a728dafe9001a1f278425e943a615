@@ -1,0 +1,27 @@
+package oo.heranca.desafio;
+
+public class Carro {
+
+	private int velocidadeAtual;
+	
+	int getVelocidadeAtual() {
+		return velocidadeAtual;
+	}
+	
+	void setVelocidadeAtual(int velocidadeAtual) {
+		this.velocidadeAtual += velocidadeAtual;
+	}
+	
+	public void acelerar() {
+		if(getVelocidadeAtual() >= 0) {
+			setVelocidadeAtual(5);
+		}
+	}
+	
+	public void frear() {
+		if(getVelocidadeAtual() )
+	}
+	
+	
+	
+}

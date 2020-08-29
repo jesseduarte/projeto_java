@@ -1,0 +1,23 @@
+package oo.heranca.desafio;
+
+public class Ferrari extends Carro implements Esportivo {
+
+	Ferrari(int velocidadeAtual) {
+		super(velocidadeAtual);
+	}
+
+	@Override
+	public void acelerar() {
+			this.velocidadeAtual += 15;
+	}
+	
+	@Override
+	public void ligarTurbo() {
+		
+	}
+	
+	@Override
+	public void desligarTurbo() {
+		
+	}
+}

@@ -1,0 +1,17 @@
+package circ;
+
+public class AreaCirc {
+	
+	double raio;
+	final static double PI = 3.14;
+	
+	double areaCirculo(double raio) {
+		this.raio = raio;
+		return PI * raio * raio;
+	}
+	
+	double comprimentoCirculo(double raio) {
+		this.raio = raio;
+		return 2 * PI * raio;
+	}
+}

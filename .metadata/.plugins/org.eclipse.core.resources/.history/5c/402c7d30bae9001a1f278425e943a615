@@ -1,0 +1,17 @@
+package oo.heranca.desafio;
+
+//Uma classe pode herdar de varias interfaces.
+//Por padrao, tds os metodos da interface sao publicos e abstratos (nao tem corpo)
+//A classe que herdar dessa interface terá obrigacao de implementar os metodos dela.
+
+//Classe Abstrata:
+
+//Pode ter metodos abstratos e concretos;
+//Geralmente é superclasse, pq as subclasses irao especificar ela;
+//Nao pode ser instanciada.
+
+public interface Esportivo {
+
+	void ligarTurbo(); //cada classe tem um jeito e maneira de ligar o turbo!Algo Especifico!
+	void desligarTurbo();
+}

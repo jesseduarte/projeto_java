@@ -7,8 +7,7 @@ import java.util.ArrayList;
 public class Aluno {
 	
 	final String nome;
-	//A lista constante(final) quer dizer que a variavel "cursos" nao pode referenciar para outra lista. Os itens dentro dela ficam variaveis.
-	final ArrayList<Curso> cursos = new ArrayList<>(); //1:N
+	final ArrayList<Curso> cursos = new ArrayList<>();
 	
 	Aluno(String nome) {
 		this.nome = nome;
@@ -21,6 +20,6 @@ public class Aluno {
 	
 	@Override
 	public String toString() {
-		return nome; 
+		return nome;
 	}
 }
