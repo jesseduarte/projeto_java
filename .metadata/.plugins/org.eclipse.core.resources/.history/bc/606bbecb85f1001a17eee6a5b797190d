@@ -1,0 +1,9 @@
+package json;
+
+public class Aluno {
+
+	private String matricula;
+	private String nome;
+	private TimeStamp nascimento;
+	
+}

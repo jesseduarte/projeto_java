@@ -1,0 +1,7 @@
+package progFuncional.LambdasDevDojo.classes;
+
+@FunctionalInterface
+public interface CarroPredicate {
+	
+	boolean test(Carro carro);
+}

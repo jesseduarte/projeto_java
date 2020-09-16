@@ -1,0 +1,12 @@
+package metodos;
+
+public class Metodos {
+
+	String nome;
+	int idade;
+	
+	public int exibirIdade(int idade) {
+		this.idade = idade;
+		return idade;
+	}
+}

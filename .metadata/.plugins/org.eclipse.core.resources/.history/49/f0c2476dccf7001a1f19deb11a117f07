@@ -1,0 +1,17 @@
+package streams;
+
+public class Teste {
+	
+	public static void main(String[] args) {
+		
+		String s = "Jessé";
+		char[] stringConvertida = s.toCharArray();
+		stringConvertida[0] = 'D';
+		s = stringConvertida.toString();
+		
+		for (int i = 0; i < s.length(); i++) {
+			//System.out.println(s);
+		}
+	}
+
+}

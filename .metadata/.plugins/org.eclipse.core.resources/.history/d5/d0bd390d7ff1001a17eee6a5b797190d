@@ -1,0 +1,14 @@
+package serializacao.test;
+
+public class SerializacaoTest {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+	private static void gravadorObjeto() {
+		Aluno aluno = new Aluno(1L, "Jesse", "123456");
+		
+	}
+}

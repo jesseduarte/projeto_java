@@ -1,0 +1,11 @@
+package progFuncional.lambdasCoder;
+
+import java.util.function.BinaryOperator;
+
+public class OperadorBinario {
+
+	public static void main(String[] args) {
+		
+		BinaryOperator<Double> media = (a,b) -> (a * b)/2;
+	}
+}

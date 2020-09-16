@@ -1,0 +1,26 @@
+package threads.test;
+
+class ThreadExemplo extends Thread{
+	private char c;
+	
+	public ThreadExemplo(char c) {
+		this.c = c;
+	}
+	@Override
+	public void run() { //onde executamos a thread. Se quiser que um codigo seja executado em paralelo, coloque ai dentro!
+		for (int i = 0; i < 1000; i++) {
+			System.out.print(c);
+			if(i % 100 == 0) {
+				System.out.println();
+			}
+		}
+	}
+}
+public class ThreadTest {
+
+	public static void main(String[] args) {
+		System.out.println(Thread.currentThread().getName());
+		ThreadExemplo te = new ThreadExemplo('A');
+		te.run();
+	}
+}

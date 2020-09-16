@@ -1,0 +1,10 @@
+package progFuncional.lambdasCoder;
+
+public class CalculoTeste {
+
+	public static void main(String[] args) {
+		
+		Calculo soma = (a,b) -> a + b;
+		System.out.println(soma.executar(2, 3));
+	}
+}

@@ -1,0 +1,43 @@
+package IO.test;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedTest {
+
+	public static void main(String[] args) {
+		
+		//PARA ARQUIVOS GRANDES:
+		
+		File file = new File("C:\\projeto_java\\exercicios\\src\\arquivo.txt");
+		
+		try {
+			//Escreve no arquivo:
+			
+			FileWriter fw = new FileWriter(file);
+			BufferedWriter br = new BufferedWriter(fw);
+			br.write("Escrevendo uma mensagem no arquivo."); //Escreve no arquivo
+			br.newLine(); //Pula linha
+			br.write("");
+			fw.flush(); //Escrevemos nesse tunel chamado Stream (sao varios bytes). a funcao flush() ela joga tudo dentro do Stream para o meu arquivo!!
+			fw.close();
+			
+			//Ler o arquivo:
+			
+			FileReader fr = new FileReader(file); //Criando o obj para ler o arquivo
+			char[] in = new char[500]; //Array de char para ler o arquivo
+			int size = fr.read(in); //Retorna a qtd de caracteres lidos. Para ler o arquivo, tem que colocar no array de Char!! 
+			System.out.println(size);
+			for(char c: in) {
+				System.out.print(c); //Retorna os caracteres lidos!!
+			}
+			fr.close();
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

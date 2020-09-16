@@ -1,0 +1,10 @@
+package exception.runtimeexception.test;
+
+public class RuntimeExceptionTest {
+
+	public static void main(String[] args) {
+		
+		int a = 10;
+		
+	}
+}

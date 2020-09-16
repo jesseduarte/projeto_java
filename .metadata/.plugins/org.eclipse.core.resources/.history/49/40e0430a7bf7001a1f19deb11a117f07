@@ -1,0 +1,11 @@
+package progFuncional.lambdasCoder;
+
+public class CalculoTeste {
+
+	public static void main(String[] args) {
+		
+		Calculo soma = (a,b) -> {
+			
+		};
+	}
+}

@@ -1,0 +1,12 @@
+package progFuncional.LambdasDevDojo.test;
+
+public class LambdasTest {
+	
+	public static void main(String[] args) {
+		
+		//Lambda: é uma funcao, é anonima (nao tem nome)
+		//Exemplo:
+		//(Carro carro) -> carro.getCor().equals("verde");
+	}
+
+}

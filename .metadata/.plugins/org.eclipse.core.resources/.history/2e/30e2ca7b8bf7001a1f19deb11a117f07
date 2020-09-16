@@ -1,0 +1,13 @@
+package progFuncional.lambdasCoder;
+
+import java.util.function.Consumer;
+
+public class Consumidor {
+
+	public static void main(String[] args) {
+		
+		//Consumer<T> tem entrada algum valor(qlq tipo) e nao retorna nada!!
+		
+		Consumer<String> imprimir = valor -> System.out.println();
+	}
+}

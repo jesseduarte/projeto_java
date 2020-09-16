@@ -1,0 +1,17 @@
+package progFuncional.LambdasDevDojo.test;
+
+public class LambdasTest {
+	
+	public static void main(String[] args) {
+		
+		//Lambda: é uma funcao, é anonima (nao tem nome)
+		//Exemplos:
+		//(Carro carro) -> carro.getCor().equals("verde");
+		//(list param)(sep) (corpo do metodo)
+		// (String s) -> s.length()
+		//(int a, int b) -> (System.out.println(a+b);
+		
+		// Quando usar o Lambda?
+		// Usando uma interface, Podemos usar quando tivermos apenas um método abstrato. 
+	}
+}

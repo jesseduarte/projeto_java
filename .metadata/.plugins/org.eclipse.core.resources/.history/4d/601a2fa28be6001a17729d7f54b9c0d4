@@ -1,8 +1,0 @@
-package circ;
-
-public class AreaCirc {
-	
-	Double raio;
-	static Double PI = 3.14;
-
-}

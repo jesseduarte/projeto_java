@@ -1,0 +1,7 @@
+package progFuncional.LambdasDevDojo.classes;
+
+//disse que essa interface terá apenas um met abstrato e usarei ela usando Lambda!!
+public interface CarroPredicate {
+	
+	boolean test(Carro carro);
+}

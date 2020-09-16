@@ -1,0 +1,11 @@
+package progFuncional.lambdasCoder;
+
+public class CalculoTeste2 {
+
+	public static void main(String[] args) {
+		
+		//Somando dois valores igual do metodo da interface, porém usando um metodo funcional!
+		
+		
+	}
+}

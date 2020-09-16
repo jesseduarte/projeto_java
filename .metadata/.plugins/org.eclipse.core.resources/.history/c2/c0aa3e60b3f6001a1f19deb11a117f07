@@ -1,0 +1,9 @@
+package padroesDeProjeto.classes;
+
+//Iremos trabalhar com o PP Builder!!
+
+public class Pessoa {
+	private String nome;
+	private String unome;
+	
+}

@@ -1,0 +1,10 @@
+package exception.checkedException.test;
+
+public class CheckedExceptionTest {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

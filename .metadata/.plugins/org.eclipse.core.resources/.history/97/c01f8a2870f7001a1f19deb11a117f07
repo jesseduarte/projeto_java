@@ -1,0 +1,21 @@
+package progFuncional.LambdasDevDojo.test;
+
+import java.util.List;
+import java.util.function.Consumer;
+
+public class LambdaTest2 {
+
+	public static void main(String[] args) {
+		
+		//Interface Consumer<T> metodo accept(T t) = uso quando quero acessar o objeto t da classe T.
+		
+		
+	}
+	
+	//exemplo: criar um metodo que imprima todos os valores de uma lista.
+	public static <T> void imprimirLista(List<T> lista, Consumer<T> c) { // o <T> diz que nao sei que lista é, so sei que será qlq lista
+		for(T e: lista) {
+			c.accept(e);
+		}
+	}
+}

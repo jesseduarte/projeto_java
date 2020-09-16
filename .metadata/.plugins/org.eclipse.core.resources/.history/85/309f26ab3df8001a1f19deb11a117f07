@@ -1,0 +1,16 @@
+package streams;
+
+public class Filter {
+	
+	final String nome;
+	final double nota;
+	
+	public Filter(String nome, double nota) {
+		super();
+		this.nome = nome;
+		this.nota = nota;
+	}
+	
+	
+
+}

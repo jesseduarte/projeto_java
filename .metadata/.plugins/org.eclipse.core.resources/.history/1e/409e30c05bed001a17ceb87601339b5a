@@ -1,0 +1,27 @@
+package metodos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Usuario {
+
+	String nome;
+	Integer idade;
+	char sexo;
+	List<Usuario> listaUsuarios;
+	
+	// Exibir a lista dos usuarios.
+	public List<Usuario> getUsuarios() {
+		return listaUsuarios;
+	}
+	
+	//Criar metodo que adiciona o usuario(objeto) na lista!
+	public void adicionarUsuario() {
+		listaUsuarios.add(new Usuario());
+	}l
+	
+	@Override
+	public String toString() {
+		return this.nome + " , " + this.idade + " , " + this.sexo;
+	}
+}

@@ -1,0 +1,42 @@
+package padroesDeProjeto.classes;
+
+//Iremos trabalhar com o PP Builder!!
+
+public class Pessoa {
+	private String nome;
+	private String uNome;
+	private String nomeDoMeio;
+	private String apelido;
+	private String nomeDoPai;
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getuNome() {
+		return uNome;
+	}
+	public void setuNome(String uNome) {
+		this.uNome = uNome;
+	}
+	public String getNomeDoMeio() {
+		return nomeDoMeio;
+	}
+	public void setNomeDoMeio(String nomeDoMeio) {
+		this.nomeDoMeio = nomeDoMeio;
+	}
+	public String getApelido() {
+		return apelido;
+	}
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+	}
+	public String getNomeDoPai() {
+		return nomeDoPai;
+	}
+	public void setNomeDoPai(String nomeDoPai) {
+		this.nomeDoPai = nomeDoPai;
+	}
+}

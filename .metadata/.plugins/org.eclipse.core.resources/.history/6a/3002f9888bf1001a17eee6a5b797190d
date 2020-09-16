@@ -1,0 +1,20 @@
+package json;
+
+import java.sql.Timestamp;
+
+//JSON é javaScript para objetos. Mapeia objetos para texto puro.
+
+public class JsonTest {
+
+	public static void main(String[] args) {
+		
+		Aluno a = new Aluno();
+		a.setNome("Jesse");
+		a.setMatricula("111");
+		a.setIdade(28);
+		a.setNascimento(Timestamp.valueOf("1992-01-25 00:00:00"));
+		System.out.println(a.toJson());
+		
+		Aluno b = new Aluno();
+	}
+}

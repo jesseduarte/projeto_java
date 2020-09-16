@@ -1,0 +1,16 @@
+package classesinternas.test;
+
+class Animal {
+	public void andar() {
+		System.out.println("Andando");
+	}
+}
+
+public class ClassesAnonimasTest {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

@@ -1,9 +1,0 @@
-package colecoes;
-
-public class ConjuntoCombinado {
-
-	public static void main(String[] args) {
-		
-		
-	}
-}

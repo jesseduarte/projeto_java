@@ -1,0 +1,17 @@
+package serializacao.test;
+
+public class Aluno {
+	
+	//Serialização = stream de objetos, vai passar varios dados de um objeto em um fluxo.
+	//jogar esses dados do objeto para um arquivo.
+	
+	private long id;
+	private String nome;
+	private String password;
+	private static String nomeEscola = "DevDojo";
+	
+	
+	
+	
+
+}

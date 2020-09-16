@@ -1,0 +1,11 @@
+package stream;
+
+public class StreamTest {
+
+	//Stream é um fluxo de dados (bytes) Ex: executar um video no youtube, ouvir musica no Spotify
+	
+	public static void main(String[] args) {
+		
+		
+	}
+}

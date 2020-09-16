@@ -1,0 +1,8 @@
+package progFuncional.LambdasDevDojo.classes;
+
+public class Carro {
+
+	private String nome = "Gol";
+	private String cor;
+	private int ano;
+}

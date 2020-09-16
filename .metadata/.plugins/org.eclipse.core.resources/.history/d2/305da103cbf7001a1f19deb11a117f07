@@ -1,0 +1,12 @@
+package streams;
+
+public class Teste {
+	
+	public static void main(String[] args) {
+		
+		String s = "Jessé";
+		
+		System.out.println(s.charAt(1));
+	}
+
+}

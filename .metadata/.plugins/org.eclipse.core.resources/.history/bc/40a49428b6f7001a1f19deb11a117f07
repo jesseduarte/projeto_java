@@ -1,0 +1,23 @@
+package streams;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class ImprimindoObjetos {
+
+	public static void main(String[] args) {
+		
+		List<String> aprovados = Arrays.asList("Lu", "Gui", "Luca", "Ana");
+		
+		//1° MODO DE IMPRIMIR:
+		System.out.println("Usando o Foreach...");
+		for(String a: aprovados) {
+			System.out.println(a);
+		}
+		
+		//2° MODO DE IMPRIMIR:
+		
+		
+		//3° MODO DE IMPRIMIR:
+	}
+}

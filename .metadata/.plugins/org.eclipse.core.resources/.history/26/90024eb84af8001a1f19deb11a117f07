@@ -1,0 +1,7 @@
+package streams;
+
+//Será usada junto com a classe Reduce3
+
+public class Media {
+
+}

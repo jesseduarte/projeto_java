@@ -1,0 +1,19 @@
+package classesInternas.test;
+
+public class ClassesInternasTest {
+	
+	public static void main(String[] args) {
+			
+	}
+}
+
+class Externa {
+	private String nome = "Jesse";
+	
+	class Interna { //classe interna ou classe aninhada! Tem acesso a todos atributos e metodos da classe externa (inclusive os privates)
+		
+		public void verClasseExterna() {
+			System.out.println(nome);
+		}
+	}
+}

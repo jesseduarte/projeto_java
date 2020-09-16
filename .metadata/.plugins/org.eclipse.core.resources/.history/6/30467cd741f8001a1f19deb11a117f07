@@ -1,0 +1,8 @@
+package streams;
+
+//Classe utilizada junto com a classe DesafioFilter
+
+public class Produto {
+
+	
+}

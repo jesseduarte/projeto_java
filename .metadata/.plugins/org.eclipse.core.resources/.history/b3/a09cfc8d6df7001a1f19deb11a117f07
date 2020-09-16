@@ -1,0 +1,48 @@
+package progFuncional.LambdasDevDojo.test;
+
+import progFuncional.LambdasDevDojo.classes.Carro;
+import progFuncional.LambdasDevDojo.classes.CarroPredicate;
+
+public class LambdasTest {
+	
+	//Lambda: é uma funcao, é anonima (nao tem nome)
+			//Exemplos:
+			//(Carro carro) -> carro.getCor().equals("verde");
+			//(list param)(sep) (corpo do metodo)
+			// (String s) -> s.length()
+			//(int a, int b) -> (System.out.println(a+b);
+			
+			// Quando usar o Lambda?
+			// Usando uma interface, Podemos usar quando tivermos apenas um método abstrato. Essa interface é chamada de Function Interface!!
+	
+	public static void main(String[] args) {
+		
+		// Usando classe anonima:
+			 //Classe anonima:
+		     //Variavel de referencia = objeto concreto sem nome
+		CarroPredicate carroPredicate = new CarroPredicate() {
+			@Override
+			public boolean test(Carro carro) {
+				return carro.getCor().equals("verde");
+			}
+		};
+		
+		//Usando Lambda:
+		CarroPredicate carroPredicate2 = (Carro carro) -> carro.getCor().equals("verde"); 
+		
+		System.out.println(carroPredicate.test(new Carro("verde", 2012)));
+		System.out.println(carroPredicate2.test(new Carro("verde", 2012)));
+		
+		//Outro exemplo:
+		
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Rodando classe anonima");
+			}
+		};
+		
+		Runnable runnable2 = () -> System.out.println("rodando"); //criei o lambda
+		runnable2.run(); //chamei o lambda
+	}
+}

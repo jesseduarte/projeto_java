@@ -1,0 +1,9 @@
+RESUMO Interfaces funcionais:
+
+SUPPLIER 			 NADA -> T
+CONSUMER			    T -> NADA
+PREDICATE		 	    T -> boolean
+UNARY OPERATOR		    T -> T (os dois do mesmo tipo)
+BINARY OPERATOR		(T,T) -> T (os dois do mesmo tipo)
+FUNCTION			    S -> T (os dois de tipos diferentes)
+BIFUNCTION		    (T,U) -> R (todos de tipos diferentes)

@@ -1,0 +1,26 @@
+package metodos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Usuario {
+
+	String nome;
+	int idade;
+	char sexo;
+	List<Usuario> lista = new ArrayList<>();
+	
+	Usuario(String nome, int idade) {
+		this.nome = nome;
+		
+		if(this.idade > 1 && this.idade < 100) {
+			this.idade = idade;
+		}
+	} 
+	
+	//Criar metodo que adiciona o usuario na lista!
+	public void adicionarUsuario(Usuario usuario) {
+		Usuario usuario = new Usuario();
+		
+	}
+}

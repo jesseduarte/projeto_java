@@ -1,0 +1,9 @@
+package progFuncional.LambdasDevDojo.test;
+
+public class LambdaTest2 {
+
+	public static void main(String[] args) {
+		
+		
+	}
+}

@@ -1,0 +1,13 @@
+package metodos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UsuarioMain {
+	
+	public static void main(String[] args) {
+		 
+		List<Usuario> listaUsuarios = new ArrayList<>();
+		listaUsuarios.add(new Usuario("jesse", 28, 'M'));
+	}
+}

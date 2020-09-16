@@ -1,0 +1,23 @@
+package exception.checkedException.test;
+
+import java.io.File;
+
+public class CheckedExceptionTest {
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public static void criarArquivo() {
+		//IOException é uma classe que é checked (que deve ser tratada, nao compila senao tratar!)
+		File file = new File("teste.txt");
+		
+		try{
+			file.createNewFile();
+			System.out.println("Arquivo criado");
+		} catch(IOException e) { // e é um objeto do tipo IOException
+			
+		}
+	}
+
+}

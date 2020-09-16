@@ -1,0 +1,15 @@
+package metodos;
+
+public class UsuarioMain {
+	
+	public static void main(String[] args) {
+		 
+		Usuario u1 = new Usuario();
+		u1.nome = "jesse";
+		u1.idade = 28;
+		u1.sexo = 'M';
+		System.out.println(u1);
+		u1.adicionarUsuario();
+		
+	}
+}

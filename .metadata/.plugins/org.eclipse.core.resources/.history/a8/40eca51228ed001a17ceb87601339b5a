@@ -1,0 +1,16 @@
+package metodos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Usuario {
+
+	String nome;
+	int idade;
+	List<Usuario> lista = new ArrayList<>();
+	
+	public int atribuirIdade(int idade) {
+		this.idade = idade;
+		return idade;
+	}
+}

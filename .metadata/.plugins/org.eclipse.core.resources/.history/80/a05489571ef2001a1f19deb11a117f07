@@ -1,0 +1,17 @@
+package threads.test;
+
+class ThreadExemplo extends Thread{
+	private char c;
+	
+	public ThreadExemplo(char c) {
+		this.c = c;
+	}
+}
+
+public class ThreadTest {
+
+	public static void main(String[] args) {
+		
+		
+	}
+}

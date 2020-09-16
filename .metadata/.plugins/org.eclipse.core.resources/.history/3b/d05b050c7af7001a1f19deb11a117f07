@@ -1,0 +1,6 @@
+package progFuncional.lambdasCoder;
+
+public interface Calculo {
+
+	
+}

@@ -1,0 +1,14 @@
+package progFuncional.lambdasCoder;
+
+import java.util.function.Predicate;
+
+public class PredicadoComposicao {
+
+	public static void main(String[] args) {
+		
+		 Predicate<Integer> isPar = numero -> numero % 2 == 0;
+		 Predicate<Integer> isTresDigitos = valor -> valor >= 100 && valor <= 999;
+		 System.out.println(isPar.test(25));
+		 System.out.println(isTresDigitos.test(25));
+	}
+}

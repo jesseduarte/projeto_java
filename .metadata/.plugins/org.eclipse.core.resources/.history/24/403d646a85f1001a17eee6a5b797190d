@@ -1,0 +1,7 @@
+package json;
+
+//JSON é javaScript para objetos. mapeia objetos para texto puro.
+
+public class JsonTest {
+
+}

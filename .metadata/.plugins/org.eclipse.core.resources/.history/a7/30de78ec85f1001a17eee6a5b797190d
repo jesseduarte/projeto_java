@@ -1,0 +1,11 @@
+package json;
+
+import java.sql.Timestamp;
+
+public class Aluno {
+
+	private String matricula;
+	private String nome;
+	private Timestamp nascimento;
+	
+}

@@ -1,0 +1,13 @@
+package metodos;
+
+public class UsuarioMain {
+	
+	public static void main(String[] args) {
+		 
+		Usuario u1 = new Usuario("Jesse", 28, 'M');
+		//adicionarUsuario(u1);
+		//adicionarUsuario(new Usuario("Jesse", 28, 'M'));
+		System.out.println(u1.getNome());
+		
+	}
+}

@@ -1,0 +1,15 @@
+package datas.novaAPIJava8;
+
+import java.time.LocalDateTime;
+import java.time.Month;
+
+public class DateTimeAPITest2 {
+	
+	public static void main(String[] args) {
+		
+		LocalDateTime dt1 = LocalDateTime.now();
+		LocalDateTime dt2 = LocalDateTime.of(2020, Month.JANUARY, 25, 23,0,0);
+		
+	}
+
+}

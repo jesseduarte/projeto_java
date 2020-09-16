@@ -1,0 +1,20 @@
+package serializacao.test;
+
+import java.io.FileOutputStream;
+
+public class SerializacaoTest {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+	private static void gravadorObjeto() {
+		Aluno aluno = new Aluno(1L, "Jesse", "123456");
+		try {
+		FileOutputStream fos = new FileOutputStream("C:\\projeto_java\\exercicios\\src\\aluno.ser");
+		} catch() {
+			
+		}
+	}
+}

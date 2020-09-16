@@ -1,0 +1,5 @@
+package exception.runtimeexception.test;
+
+public class RuntimeExceptionTest {
+
+}

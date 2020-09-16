@@ -1,0 +1,14 @@
+package progFuncional.lambdasCoder;
+
+import java.util.function.Supplier;
+
+public class Fornecedor {
+	
+	public static void main(String[] args) {
+		
+		//Supplier<T> nao tem entrada, porém retorna algo.
+		
+		Supplier<List<String>>
+	}
+
+}

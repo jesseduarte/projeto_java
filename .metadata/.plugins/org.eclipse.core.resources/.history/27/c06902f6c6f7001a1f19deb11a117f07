@@ -1,0 +1,13 @@
+package streams;
+
+import java.util.function.UnaryOperator;
+
+//Criei essa classe para armazenar as minhas expressoes Lambdas!!
+
+public class Utilitarios {
+	
+	static UnaryOperator<String> maiusculo = n -> n.toUpperCase();
+	static UnaryOperator<String> primeiraLetra = n -> n.charAt(0) + ""; //Concatenei um caracter com uma string vazia que ira resultar numa string.		
+	static UnaryOperator<String> grito = n -> n + "!!!";
+
+}

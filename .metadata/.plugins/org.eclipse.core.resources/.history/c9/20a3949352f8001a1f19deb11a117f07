@@ -1,0 +1,14 @@
+package streams;
+
+//Será usado junto com a classe Filter e com a classe Reduce2!!
+
+public class Aluno {
+	
+	final String nome;
+	final double nota;
+	
+	public Aluno(String nome, double nota) {
+		this.nome = nome;
+		this.nota = nota;
+	}
+}

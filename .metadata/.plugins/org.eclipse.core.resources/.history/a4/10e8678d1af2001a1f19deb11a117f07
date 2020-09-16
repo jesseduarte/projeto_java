@@ -1,0 +1,10 @@
+package classesinternas.test;
+
+public class ClassesAnonimasTest {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

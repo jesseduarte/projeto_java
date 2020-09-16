@@ -1,0 +1,17 @@
+package streams;
+
+public class Teste {
+	
+	public static void main(String[] args) {
+		
+		String s = "TEXTO"; 
+		String invertida = ""; 
+		
+		for (int i = s.length(); i < 0; i--) { 
+			invertida += s.charAt(i); 
+		} 
+		
+		System.out.println(invertida);
+	}
+
+}

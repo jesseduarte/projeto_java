@@ -1,0 +1,13 @@
+package datas.novaAPIJava8;
+
+import java.time.LocalDateTime;
+
+public class DateTimeAPITest2 {
+	
+	public static void main(String[] args) {
+		
+		LocalDateTime dt1 = LocalDateTime.now();
+		
+	}
+
+}

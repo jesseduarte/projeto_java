@@ -1,0 +1,25 @@
+package IO.test;
+
+import java.io.File;
+import java.io.IOException;
+
+public class FileTest {
+
+	public static void main(String[] args) {
+		
+		File file = new File("C:\\projeto_java\\exercicios\\src\\teste.txt"); //Nao criou nada, pq aqui so estou criando um objeto do tipo File!!
+		
+		try {
+			System.out.println(file.createNewFile()); //cria o arquivo
+			//System.out.println(file.exists()); //saber se o arquivo existe
+			boolean exists = file.exists();
+			if(exists) {
+				file.delete();
+			} else {
+				file.createNewFile();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

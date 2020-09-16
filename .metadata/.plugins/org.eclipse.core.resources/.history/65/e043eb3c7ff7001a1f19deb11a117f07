@@ -1,0 +1,14 @@
+package progFuncional.lambdasCoder;
+
+import java.util.function.BinaryOperator;
+
+public class CalculoTeste2 {
+
+	public static void main(String[] args) {
+		
+		//Somando dois valores igual do metodo da interface, porém usando uma interface funcional padrao do Java!
+		//O <T> diz qual TIPO de parametro que quero usar, tipo uma lista!!
+		BinaryOperator<Double> calc = (x,y) -> x + y;
+		System.out.println(calc.apply(t, u));
+	}
+}

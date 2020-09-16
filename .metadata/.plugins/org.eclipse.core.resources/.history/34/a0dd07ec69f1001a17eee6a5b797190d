@@ -1,0 +1,14 @@
+package stream;
+
+public class StreamTest {
+
+	//Stream é um fluxo de dados (bytes) Ex: executar um video no youtube, ouvir musica no Spotify
+	//Temos duas classes principais:
+	//InputStream = leitura de bytes (dados). Ex: fazer leitura de um arquivo.
+	//OutputStream = escrita de bytes (dados).
+	
+	public static void main(String[] args) {
+		
+		
+	}
+}

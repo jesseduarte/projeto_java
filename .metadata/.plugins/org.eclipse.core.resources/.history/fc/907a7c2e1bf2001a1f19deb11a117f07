@@ -1,0 +1,26 @@
+package classesinternas.test;
+
+class Animal {
+	public void andar() {
+		System.out.println("Andando");
+	}
+}
+
+public class ClassesAnonimasTest {
+	
+	public static void main(String[] args) {
+		
+		//Imagina que precisamos mudar o comportamento do metodo andar() da classe Animal.
+		//tipo, andar rapido. Nao queremos criar uma subclasse que sobrescreve o metodo
+		//criado. Para fazer isso, precisamos criar uma classe anonima.
+
+		//Classe anonima: uma classe que é definida em det momento do codigo, onde nao
+		//vai ter nome, ela simplesmente vai deixar de existir depois que utilizamos.
+		
+		Animal a = new Animal() {
+			
+		}
+		
+	}
+
+}
