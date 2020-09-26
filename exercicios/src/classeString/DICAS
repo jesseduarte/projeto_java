@@ -1,0 +1,96 @@
+DICAS:
+
+* USANDO A CLASSE STRING, TODA VEZ QUE USAMOS UM METODO STRING EM UMA VARIAVEL, CRIAMOS UMA 
+NOVA VARIAVEL STRING.
+
+* ALGUNS METODOS STRING:
+
+obj.concat(outra String) = concatena (uni) duas strings, formando uma nova String;
+obj.charAt(int index) = retorna um char de acordo com o numero o index;
+obj.equalsIgnoreCase(outra String) = Compara ignorando minusculo de maiusculo.
+obj.length() = retorna o tamanho da String.
+obj.replace(char_antigo, char_novo) = troca as letras de um String.
+obj.toLowerCase() = transforma pra minusculo
+obj.toUpperCase() = transforma pra maiusculo
+
+nome.substring(comeca com o indice) = retorna do 1 em diante!!
+Ex: String nome = "Isabele";
+    nome.substring(1); R: sabele
+
+nome.substring(comeca com indice, termina no indice) = retona do indice inicial e vai
+ate o (indice final - 1)
+Ex: String nome = "Isabele";
+    nome.substring(1,4); R: sab
+
+nome.split(terminador ou Regex) = divide a String em elementos num array de acordo com a regra do parametro.
+Ex: String nome = "Jesse; Rangel; Queiroz; Duarte";
+    String[] name = nome.split(";"); //Ele divide os nomes de acordo com o ";" e joga em cada elemento do array.
+
+obj.trim() = tira os espaços em branco laterais de uma string (nao do meio).
+obj.endsWith("esse") = termina com esse
+
+obj.indexOf()
+obj.lastIndexOf()
+
+obj.isBlank() = verifica se a string está vazia(" ").Dá true, se tem espaço em branco
+
+obj.isEmpty() = verifica se a string está vazia(" ").Dá false, se tem espaço em branco
+e nao é considerado vazio
+
+obj.startsWith("J") = começa com "J" maiusculo. É case-sensitive.
+obj.endsWith("e") = termina com "e" minusculo. É case-sensitive.
+obj.toCharArray() = converte a String para um array de chars.
+
+String.format(String formatada, args...)
+Ex: final String formato = "%d/%d/%d";
+	String.format(formato, dia,mes,ano);
+
+---------------------------------------------------------------------------------------
+
+StringBuilder: Essa classe permite criar e manipular dados de Strings dinamicamente, ou 
+seja, podem criar variáveis de String modificáveis.
+
+StringBuilder sb = new StringBuilder(16); //O valor do construtor é o tamanho do seu sb...
+											Se deixar em branco, por default, serao 16 
+											caracteres!
+
+sb.append("Uma frase comum"); //Já o sb é diferente, quando damos o append() (parecido com o
+								concat()) ele vai usar a mesma sb que criamos (reutiliza a 
+								mesma String)!!
+
+System.out.println(sb); 	  //ele imprimi normalmente, pq ele tem o met toString()
+
+sb.append(" test");			  
+
+System.out.println(sb);      //Vai imprimir: Uma frase comum test
+
+Dif de StringBuilder e StringBuffer:
+
+StringBuilder é usado em sistemas monothread, nao se preocupa em isolar os valores.
+StringBuffer é usado em sistemas multithread, isola os valores e SINCRONIZA-OS.
+StringBuilder é mais rápido que o StringBuffer.
+
+MÉTODOS DO STRINGBUILDER:
+
+sb.append(char[], offset, length) = concateno um array de char a partir do offset até o length que eu determinar.
+Ex: char[] c = {'1','2','3','4','5','6','7','8','9'};
+    sb.append(c, 5, 1)
+    R: 6
+
+sb.reverse() = troca a ordem da string (inverter)
+sb.delete(0,2) = Mesma coisa do met subString() da classe String. (0,2) -> ele tira do 0 e até o 1!
+sb.insert(2, "***") = Insere o *** a partir da pos 2, contando do zero!
+sb.replace(indice_inicial, indice_final, novaString) = substitui de acordo com o intervalo
+sb.charAt(int indice)
+sb.length()
+sb.subString()
+
+PARA QUESTAO DE DESEMPENHO DE ESTRUTURAS, PODEMOS USAR A SEGUINTE ESTRATEGIA:
+
+public static void main(String[] args) {
+		
+		long inicio = System.currentTimeMillis(); //tempo atual em milisegundos
+		METODO_IMPLEMENTADO(tamanho);
+		long fim = System.currentTimeMillis();
+		System.out.println("Tempo gasto: " + (fim-inicio) + "ms");
+}

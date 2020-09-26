@@ -1,0 +1,199 @@
+DICAS:
+
+IO:
+
+FILE:
+
+File file = new File("C:\\projeto_java\\exercicios\\src\\teste.txt"); //Nao criou nada, pq aqui so estou 
+								       criando um objeto do tipo File!!
+file.createNewFile(); //cria o arquivo. (booleano!)
+
+CONVERTENDO O FILE.LASTMODIFIED() DE MILISSEGUNDOS PARA UMA DATA DO TIPO DATE:
+
+new Date(file.lastModified())
+R: Fri Sep 25 16:08:42 BRT 2020
+
+CONVERTENDO O FILE.LASTMODIFIED() DE MILISSEGUNDOS PARA UMA DATA DO TIPO LOCALDATETIME:
+
+LocalDateTime ldt = LocalDateTime.ofInstant(Instant.ofEpochMilli(file.lastModified()), ZoneId.systemDefault());
+(ldt recebe um instant em milissegundos a partir de um fuso horario padrao do sistema, que será convertido em um
+localdatetime).
+
+System.out.println(ldt);
+R: 2020-09-25T16:14:34.438
+
+ALGUNS METODOS FILE:
+
+file.exists() = arquivo ou diretorio existe? (booleano)
+file.canRead() = se o arquivo tem permissao de leitura.
+file.getName() = retorna o nome do arquivo.
+file.getParent() = retorna o caminho do arquivo sem exibir o nome do arquivo.
+file.getPath() = exibe o caminho do arquivo (pathname)
+file.isDirectory() = ver se o arquivo é um diretorio.
+file.isfile() = é um arquivo?
+file.isHidden() = é um arquivo oculto?
+file.lastModified() = Ultima modif do arquivo. OBS: tempo em milissegundos! R: 1601060922154
+file.delete() = deleta um arquivo.
+file.getTotalSpace() = exibe o tamanho total do arquivo.
+file.getUsableSpace() = exibe o tamanho utilizado pelo arquivo.
+file.getFreeSpace() = exibe o tamanho livre do arquivo.
+file.isAbsolute() = é path absoluto?
+file.list() = retorna o um array de strings do arquivo.
+
+FILEWRITER:
+
+Escreve em  um arquivo.
+
+Ex:
+
+File file = new File("C:\\projeto_java\\exercicios\\src\\arquivo.txt");
+FileWriter fw = new FileWriter(file); //Criando o obj para escrever no arq. Se ja existir algo escrito, e vc escrever algo
+					 diferente no writer(), ele irá sobrescrever o arquivo!
+
+FileWriter fw = new FileWriter(file, true); //Criando o obj para escrever no arq, sem sobrescreve-lo e sim escrevendo no 
+						final do arquivo!!
+
+fw.write("Escrevendo uma mensagem no arquivo.\nE pulando uma linha 1!!");  = Escreve no arquivo
+
+fw.flush();  = Escrevemos nesse tunel chamado Stream (sao varios bytes). a funcao flush() ela joga tudo dentro do Stream 
+ 		para o meu arquivo!!
+
+fw.close(); = fecha a escrita no arquivo.
+
+FILEREADER:
+
+Le um arquivo.
+
+FileReader fr = new FileReader(file); //Criando o obj para ler o arquivo
+char[] in = new char[500]; //Array de char para ler o arquivo
+int size = fr.read(in); //Retorna a qtd de caracteres lidos. Para ler o arquivo, tem que colocar no array de Char!!
+
+for(char c: in) {
+	System.out.print(c); //Retorna os caracteres lidos!!
+}
+fr.close();
+
+METODOS FILEWRITER E FILEREADER:
+
+fr.transferTo(Writer out) = Conforme ele está lendo, ele escreverá em outro Writer.
+
+NIO (NOVO PACKAGE NIO JAVA 8):
+
+CLASSE PATHS E FILES:
+
+Usamos a classe Paths para criar arquivos, que implementa a Interface Path!!
+E operacoes nesses arquivos serão realizadas pela classe Files!!
+
+Caminho absoluto = C:\\projeto_java\\exercicios\\src\\NIO\\test\\teste.txt
+Caminho relativo = \\exercicios\\src\\NIO\\test\\teste.txt
+
+Path p1 = Paths.get("C:\\projeto_java\\exercicios\\src\\NIO\\test\\teste.txt");
+Path p2 = Paths.get("C:\\projeto_java\\exercicios\\src\\NIO\\arquivoCopiado.txt");
+
+METODOS CLASSE PATHS:
+
+Paths.get() = cria um arquivo.
+p1.compareTo(p2) = compara paths.
+p1.startsWith("C:\\") = verifica se o Path começa com C:
+p1.endsWith("teste.txt") = verifica se o Path termina com teste.txt
+p1.isAbsolute() = retorna se o Path é absoluto.
+p1.toString() = exibe a representacao em string do path.
+p1.getFileName() = retorna o nome do arquivo ou diretorio do Path.
+p1.getName(4) = lida o Path como array e retorna o elemento do indice. Ex: (4) = test
+
+p1.getParent() = retorna todo caminho Pai do arquivo.
+Ex: C:\projeto_java\exercicios\src\NIO\test\
+
+p1.getRoot() = retorna o componente principal do Path. R: C:
+
+Iterator<Path> path1 = p1.iterator();
+while(path1.hasNext()) {
+	System.out.println(path1.next());
+}
+R: projeto_java
+   exercicios
+   src
+   NIO
+   test
+   teste.txt
+
+Consumer<Path> consumerPath = p -> System.out.println(p);
+p1.forEach(consumerPath);
+
+R: projeto_java
+   exercicios
+   src
+   NIO
+   test
+   teste.txt
+
+p1.subpath(1, 6) = retorna um caminho relativo de acordo com o indice.
+p1.toFile() = converte o Paths para File.
+
+p1.toUri() = converte o Paths para URI.
+R: file:///C:/projeto_java/exercicios/src/NIO/test/teste.txt
+
+METODOS CLASSE FILES:
+
+Files.createFile(p1) = criando um arquivo.
+Files.createDirectory(dir, attrs) = criar diretorio.
+Files.createDirectories(dir, attrs) = criar diretorios.
+Files.deleteIfExists(path) = deleta o arquivo, se existir.
+Files.exists(path, options) = testa se o arquivo existe.
+Files.notExists(path, options) = testa se o arquivo nao existe.
+Files.isDirectory(p1) = é um diretorio?
+Files.isExecutable(p1) = verifica se o arquivo tem privilegio de executar (de rwx, verifica se ele tem o x)
+Files.isHidden(path) = verifica se o arquivo é oculto
+Files.isRegularFile(p1) = verifica se é um arquivo (true). se for um diretorio retorna false.
+Files.isSameFile(p1, p3) = verifica se os dois Paths tem o mesmo path.
+Files.probeContentType(p1) = verifica o tipo do arquivo. text/plain, html, etc.
+Files.readString(p1) = le o conteudo do arquivo.
+
+Stream<String> ler = Files.lines(p1); = Ler o arquivo como Stream.
+Consumer<String> consumerLer = l -> System.out.println(l);
+ler.forEach(consumerLer);
+
+Files.size(p1) = retorna o tamanho do arquivo em bytes.
+
+Path p1 = Paths.get("C:\\projeto_java\\exercicios\\src\\NIO\\test\\teste.txt");
+Path p4 = Paths.get("C:\\projeto_java\\exercicios\\src\\NIO\\testeCopiado.txt");
+Files.copy(p1, p4) = copia o arquivo de p1 para p4.
+Files.getFileStore(p1) = qual disco está armazenado o arquivo.
+
+Files.getLastModifiedTime(p1) = retorna a ultima date-time de modif do arquivo.
+R: 2020-09-26T15:42:56.738415Z
+
+Files.setLastModifiedTime(path, time) = alterar a ultima date-time de modif do arquivo.
+
+Files.getOwner(p1) = exibe o proprietario do arquivo.
+R: Informatica\isabele (User)
+
+Files.setOwner(path, owner) = altera o proprietario do arquivo.
+
+Stream<Path> caminho = Files.list(p3); = exibe todos os arquivos dentro de uma pasta.
+Consumer<Path> consumerPath = p -> System.out.println(p);
+caminho.forEach(consumerPath);
+
+DirectoryStream<Path> ds = Files.newDirectoryStream(p3); = exibe todos os arquivos dentro de uma pasta.
+Consumer<Path> consumerPath = cp -> System.out.println(cp);
+ds.forEach(consumerPath);
+
+Diferença entre Stream<Path> e DirectoryStream<Path> = o segundo é bem especifico para diretorios, o primeiro uso geral.
+
+Files.move(source, target, options) = move ou renomeia um arquivo.
+
+BufferedReader br = Files.newBufferedReader(p1); = lê apenas uma linha do arquivo.
+System.out.println(br.readLine());
+
+BufferedReader br = Files.newBufferedReader(p1); = ler o arquivo todo usando BufferedReader (mais desempenho)
+Stream<String> ler = br.lines();
+Consumer<String> consumerLer = l -> System.out.println(l);
+ler.forEach(consumerLer);
+
+Files.setPosixFilePermissions(path, perms) = altera as permissoes de um arquivo.
+
+Path escrita = Files.writeString(p1, "Hello World !!", StandardOpenOption.APPEND); = escreve no final do arquivo (APPEND).
+System.out.println(Files.readString(escrita));
+
+Path escrita = Files.writeString(p1, "Hello World !!",StandardOpenOption.TRUNCATE_EXISTING); = escreve no arquivo, apagando seu conteudo.
+System.out.println(Files.readString(escrita));

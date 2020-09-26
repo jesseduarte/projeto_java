@@ -1,9 +1,0 @@
-package IO.test;
-
-public class BufferedTest {
-
-	public static void main(String[] args) {
-		
-		
-	}
-}

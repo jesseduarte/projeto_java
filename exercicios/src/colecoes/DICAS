@@ -1,0 +1,144 @@
+LISTA:
+
+*PERMITE ELEMENTOS DUPLICADOS;
+*mantém uma ordenação específica entre os elementos. quando percorrer a lista, os elementos
+serão encontrados em uma ordem pré-determinada, definida na hora da inserção dos mesmos.
+
+METODOS LIST:
+
+lista.add(obj ou tipo primt) = adiciona um elemento no final da fila.
+lista.add(indice, obj ou tipo primt) = adiciona um elemento em qualquer indice da fila.
+lista.addAll(lista1) = adiciona a lista1 no final da lista.
+lista.addAll(1,lista1) = adiciona a lista1 a partir do indice 1 da lista.
+lista.clear() = limpa a lista.
+lista.contains(object) = se a lista contem o obj
+lista.containsAll(Collection lista1) = se a lista contém a lista1
+lista.indexOf(object) = retorna o indice do objeto especificado
+lista.isEmpty() = lista está vazia?
+lista.remove(object) = remove um obj da lista
+lista.remove(int indice) = remove um obj da lista
+lista.removeAll(lista) = remove tds os obj da lista
+lista.set(int index, object) = substitui o obj do indice especificado para o objeto passado.
+lista.retainAll(Collection lista1) = permanece na lista apenas os elementos que condiz na lista1
+lista.size() = retorna o num de elementos da lista
+lista.toString() = retorna a representacao da lista em String
+lista.subList(ind_inicial, ind_final) = retorna uma visao de uma porção da lista.
+lista.stream() = transforma em um stream.
+lista.forEach(Consumer<Usuario>) = itera na lista usando um Consumer (stream)
+lista.sort(Comparator<Usuario>) = ordena os elementos da lista usando o Comparator<Usuario> (stream)
+lista.removeIf(Predicate<Usuario>) = remove os elementos conforme condicao do Predicate.
+lista.replaceAll(UnaryOperator<Usuario>) = substitui cada elemento da lista conforme o operador.
+
+É BOM DESEMPENHO E RECOMENDÁVEL USAR O iterator() para percorrer as coleções. Principalmente,
+as coleções SET, LinkedList, etc, pq sao coleções não ordenadas.
+
+Ex:Iterator<Usuario> it = lista.iterator();
+   while(it.hasNext()) {
+	System.out.println(it.next());
+   }
+   
+SET:
+
+*Nao considera elementos duplicados;
+*nao mantém a ordem dos elementos, quando eu adiciono. Para manter a ordem dos elementos
+ao invés de usarmos a classe HashSet<>(), usamos a classe TreeSet<>().
+*MESMOS METODOS USADOS NO LIST, TIRANDO ALGUNS.
+
+HashSet conjunto = new HashSet(); //<nao coloco nada> = Sem restricoes, é um Object!
+Set<Integer> nums = new TreeSet<>(); //determinei que só quero inteiros.
+
+QUEUE(FILA):
+
+*Permite elementos duplicados;
+*exibe a fila conforme a ordem que foram inseridos.
+
+Queue<String> filaBanco = new LinkedList<>();
+O linkedList() tem baixo desempenho no for, por isso usamos com ele o iterator().
+
+ALGUNS METODOS:
+
+filaBanco.add() = adiciona elemento no final da fila. qd fila chega no limite, lança excecao.
+filaBanco.offer() = adiciona elemento no final da fila. qd fila chega no limite, retorna false.
+filaBanco.element() = retorna o 1° elemento. qd a fila estiver vazia, lança excecao.
+filaBanco.peek() = retorna o 1° elemento. qd a fila estiver vazia, retorna null.
+filaBanco.remove() = retorna o 1° elemento da fila e remove. qd a fila estiver vazia, lança excecao
+filaBanco.poll() = retorna o 1° elemento da fila e remove. qd a fila estiver vazia, retorna null
+E ALGUNS METODOS DE LIST...
+
+DEQUE(PILHA):
+
+*Permite elementos duplicados;
+*a ordem dos elementos é conforme a regra da pilha.
+
+Usamos a classe ArrayDeque(), porém existe tambem a classe stack():
+Deque<String> livros = new ArrayDeque<>();
+
+ALGUNS METODOS:
+
+livros.add() = empilha na pilha.
+livros.push() = empilha na pilha.
+livros.addFirst() = adiciona como 1° elemento.
+livros.addLast() = adiciona como ultimo elemento.
+livros.peek() = exibe o 1° elemento.
+livros.element() = exibe o 1° elemento.
+livros.pop() = remove o 1° elemento.
+livros.pool() = remove o 1° elemento.
+livros.remove() = remove o 1° elemento.
+livros.getFirst() = retorna o elemento do topo da pilha.
+livros.getLast() = retorna o elemento da base da pilha.
+E ALGUNS METODOS DA LIST...
+
+HASH:
+
+ELE TEM O HASHSET, LINKEDHASHSET E O TREESET. O MAIS RAPIDO É O HASHSET!
+
+*Nao permite elementos duplicados;
+*Não mantem a ordem dos elementos, quando sao inseridos.
+
+Ex: HashSet<Usuario> usuarios = new HashSet<>();
+
+ALGUNS METODOS DO SET E DO LIST...
+
+MAP:
+
+*É BOM USAR QUANDO QUEREMOS RECUPERAR UM OBJ ESPECIFICO. PODE SER USADO PARA CRIARMOS
+UM CACHE DE OBJETOS.
+
+*COLECAO QUE PERMITE DOIS TIPOS (CHAVE E VALOR):
+
+EX: Map<Integer, String> usuarios = new HashMap<>();
+
+QUANDO ADICIONAMOS E...:
+
+SOMENTE AS CHAVES SAO IGUAIS: ELE SUBSTITUI O VALOR ANTERIOR;
+SOMENTE OS VALORES SAO IGUAIS: ELE DUPLICA O VALOR;
+COLOCAMOS CHAVES E VALORES IGUAIS: ELE NAO ADICIONA A DUPLICIDADE;
+
+ALGUNS METODOS:
+
+usuarios.keySet() = retorna somente tds as chaves.
+usuarios.values() = retorna somente tds os valores.
+usuarios.entrySet() = retorna as chaves com os seus respec valores. retorna no estilo array associativo.
+usuarios.containsKey(3) = o Map contem essa chave?
+usuarios.containsValue("Rafaela") = o Map contem esse valor?
+usuarios.get(2) = retorna o valor da chave especificada.
+E ALGUNS MET DE LIST...
+
+Itera somente as chaves (coloca um debaixo do outro):
+
+for(int k: usuarios.keySet()) {
+	System.out.println(k);
+}
+
+Itera somente os valores (coloca um debaixo do outro):
+
+for(String v: usuarios.values()) {
+	System.out.println(v);
+}
+
+Itera as chaves com os seus respec valores (coloca um debaixo do outro):
+
+for(Entry<Integer, String> registro: usuarios.entrySet()) {
+	System.out.print(registro.getKey() + "==>");
+	System.out.println(registro.getValue());
+}

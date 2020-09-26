@@ -1,0 +1,37 @@
+DICAS:
+
+* Para calcular o total de uma soma:
+crie a var total igual a 0 e depois crie um for iterando "total += notas[i];"
+
+* Lista de métodos da classe Arrays:
+
+Arrays.asList("..","..","..",...) = lista imutavel, lista de tamanho fixo para um array 
+especifico.
+Ex: List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
+
+Arrays.copyOf(nome_array_existente, novo_tamanho) = cria um array com a copia de um array 
+existente diz um novo tamanho;
+
+Arrays.equals(nome_array1, nome_array2) = serao iguais se tiverem o msm numero de elementos,
+ os mesmos elementos e na mesma ordem.
+
+Arrays.fill(nome_array, valor) = substitui o valor para tds os elemts do array.
+
+Arrays.fill(nome_array,indice_inicial,indice_final,valor) = substitui no valor num range do 
+array.
+
+Arrays.sort(nome_array) = ordena o array em ordem crescente.
+
+Arrays.setAll(nome_array, IntUnaryOperator function) = atribui valores ao array de acordo 
+com a funcao especificada.
+Ex: int[] nums = new int[50];
+    IntUnaryOperator valores = n -> n + 1;
+    Arrays.setAll(nums, soma);
+Res: gerará um array com numeros 1 a 50.
+
+Arrays.stream(nome_array) = transforma o array em uma stream.
+Ex: se for array de int, retornará um IntStream. IntStream numbers = Arrays.stream(nums1)
+
+Arrays.toString(nome_array) = transforma um array de outro tipo numa representacao String.
+Ex: [a,b,c]
+Parecido com o String.valueOf(valor_qlq_tipo) = virá uma representacao String do valor.

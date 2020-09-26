@@ -18,6 +18,8 @@ public class DateFormatTest {
 		dfs[4] = DateFormat.getDateInstance(DateFormat.LONG);
 		dfs[5] = DateFormat.getDateInstance(DateFormat.FULL);
 		
+		System.out.println(dfs[2].format(c.getTime()));
+		
 		for(DateFormat df: dfs) {
 			System.out.println(df.format(c.getTime())); //pegando um met do Date (getTime()) e nao do Calendar
 		}

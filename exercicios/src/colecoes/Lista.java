@@ -15,6 +15,12 @@ public class Lista {
 		lista.add(new Usuario("Lia"));
 		lista.add(new Usuario("Bia"));
 		lista.add(new Usuario("Manu"));
+		lista.add(new Usuario("Bia"));
+		
+		for(Usuario u: lista) {
+			System.out.println(u.nome);
+		}
+		System.out.println("");
 		
 		System.out.println(lista.get(3));
 		

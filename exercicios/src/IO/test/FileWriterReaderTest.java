@@ -19,7 +19,6 @@ public class FileWriterReaderTest {
 		//Nao precisa mais colocar o close() e nem fechar conexao no bloco finally{}!!
 		try(FileWriter fw = new FileWriter(file);
 			FileReader fr = new FileReader(file)) {
-			
 			fw.write("Escrevendo uma mensagem no arquivo.\nE pulando uma linha 1!!"); //Escreve no arquivo
 			fw.flush(); //Escrevemos nesse tunel chamado Stream (sao varios bytes). a funcao flush() ela joga tudo dentro do Stream para o meu arquivo!!
 			char[] in = new char[500]; //Array de char para ler o arquivo
@@ -28,6 +27,7 @@ public class FileWriterReaderTest {
 			for(char c: in) {
 				System.out.print(c); //Retorna os caracteres lidos!!
 			}
+			
 			
 		} catch(IOException e) {
 			e.printStackTrace();

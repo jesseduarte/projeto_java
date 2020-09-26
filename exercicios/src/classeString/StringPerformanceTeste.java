@@ -13,12 +13,12 @@ public class StringPerformanceTeste {
 		System.out.println("Tempo gasto: " + (fim-inicio) + "ms");
 		
 		inicio = System.currentTimeMillis(); //tempo atual em milisegundos
-		concatStringBuilder(200000);
+		concatStringBuilder(30000);
 		fim = System.currentTimeMillis();
 		System.out.println("Tempo gasto: " + (fim-inicio) + "ms");
 		
 		inicio = System.currentTimeMillis(); //tempo atual em milisegundos
-		concatStringBuffer(200000);
+		concatStringBuffer(30000);
 		fim = System.currentTimeMillis();
 		System.out.println("Tempo gasto: " + (fim-inicio) + "ms");
 		

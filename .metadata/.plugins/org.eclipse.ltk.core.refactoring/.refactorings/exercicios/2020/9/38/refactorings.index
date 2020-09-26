@@ -5,3 +5,11 @@
 1600223175084	Rename type 'map'
 1600228485663	Delete element
 1600283590718	Rename type 'match'
+1600307551667	Delete element
+1600313446660	Rename type 'NovaPessoa'
+1600363132838	Rename local variable 'stmt'
+1600385300724	Delete element
+1600386771164	Copy file
+1600398606969	Copy file
+1600399038190	Delete element
+1600399124162	Rename type 'FabricaConexaoError'

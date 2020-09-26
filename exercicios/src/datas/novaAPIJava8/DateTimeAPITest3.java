@@ -22,5 +22,4 @@ public class DateTimeAPITest3 {
 		System.out.println(parse1);
 		System.out.println(parse2);
 	}
-
 }

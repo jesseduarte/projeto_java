@@ -1,0 +1,76 @@
+DICAS:
+
+GENERICS:
+
+Usar Generics evita problemas de Casts!!
+
+classe generica<X> diz que tenho uma classe generica que vai armazenar alguma coisa de
+um tipo X. Iremos saber qual tipo que iremos retornar, quando formos realizar as operações na 
+classe.
+
+Ex:
+
+public class Caixa<X> {
+	
+	private X coisa;
+	
+	public void guardar(X coisa) {
+		this.coisa = coisa;
+	}
+	
+	public X abrir() {
+		return coisa;
+	}
+}
+
+Temos dois modos:
+
+Resolvendo o tipo <X> a partir da instanciacao dos objetos:
+
+public static void main(String[] args) {
+		
+	Caixa<String> caixaA = new Caixa<>(); //usando a classe Caixa, disse que meu obj será do TIPO String!!
+	caixaA.guardar("Segredo!");
+	System.out.println(caixaA.abrir());
+		
+	Caixa<Double> caixaB = new Caixa<>();
+	caixaB.guardar(3.1415);
+	System.out.println(caixaB.abrir());
+		
+}
+
+Resolvendo o tipo <X> a partir da Herança:
+
+public class CaixaInt extends Caixa<Integer>{ //ele resolve colocando o Integer no X da Caixa<X>. Logo a 
+					        CaixaInt vira nao generico!
+	
+}
+
+public static void main(String[] args) {
+		
+	CaixaInt caixaA = new CaixaInt();
+	caixaA.guardar(123);
+	Integer coisaA = caixaA.abrir();
+	System.out.println(coisaA);
+}
+
+Ex:
+
+public class ListaUtil {
+	
+	public static <T> T getUltimo(List<T> lista) { //Pegar o ultimo elemento de uma lista de qlq tipo T. Vai retornar um obj T do tipo T
+		return lista.get(lista.size() - 1);
+	}
+}
+
+public static void main(String[] args) {
+		
+	List<String> langs = Arrays.asList("JS", "PHP", "Java", "C++");
+	List<Integer> nums = Arrays.asList(1,2,3,4,5,6);
+	
+	String ultimaLinguagem = ListaUtil.getUltimo(langs);
+	System.out.println(ultimaLinguagem);
+	
+	Integer ultimoNumero = ListaUtil.getUltimo(nums);
+	System.out.println(ultimoNumero);
+}

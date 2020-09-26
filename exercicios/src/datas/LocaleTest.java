@@ -8,7 +8,8 @@ public class LocaleTest {
 
 	public static void main(String[] args) {
 
-		//localização!! A lingua usa o padrao da ISO-639. pt = portugues, br = brasil, en = ingles
+		//localização!! A lingua usa o padrao da ISO-639. pt = portugues, br = brasil, 
+		//en = ingles
 		Locale locale = new Locale("pt");
 		Locale locale1 = new Locale("en");
 		
@@ -22,7 +23,5 @@ public class LocaleTest {
 		
 		System.out.println(locale1.getDisplayLanguage()); //retorna a lingua do locale
 		System.out.println(locale.getDisplayLanguage(locale1)); //retorna a lingua do locale na lingua do parametro
-		
-		
 	}
 }

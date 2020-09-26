@@ -10,7 +10,8 @@ public class ManipulacaoDeDatasTest {
 		//Classe Date, classe antiga, os metodos maioria ficaram obsoletos!! Classe Calendar substituiu ela!
 		//No Java 8, fizeram tambem a classe Time melhor que as classes Date e o Calendar!
 		
-		//Date date = new Date(1_000_000_000_000L); // se quiser em milissegundos
+		Date date2 = new Date(1_000_000_000_000L); // se quiser em milissegundos
+		System.out.println(date2);
 		Date dataAtual = new Date(); //deixando vazio, ele busca a data atual
 		System.out.println(dataAtual); //tem o toString() implicito
 		System.out.println(dataAtual.getTime()); //retorna a data atual em milissegundos
@@ -19,9 +20,12 @@ public class ManipulacaoDeDatasTest {
 		
 		//Vamos verificar o Calendar (classe abstrata):
 		
+		System.out.println("");
+		
 		Calendar c = Calendar.getInstance(); //objeto c, do tipo Calendar, atribuido por um metodo static
 		System.out.println(c);
 		System.out.println(Calendar.SUNDAY); //retorna em int
+
 		if(Calendar.SUNDAY == c.getFirstDayOfWeek()) {
 			System.out.println("Domingo é o primeiro dia da semana");
 		}
@@ -35,7 +39,5 @@ public class ManipulacaoDeDatasTest {
 		c1.add(Calendar.MONTH, 3);
 		Date date1 = c1.getTime(); //retorna um objeto Date representando um valor Calendar
 		System.out.println(date1);
-		
-		
 	}
 }

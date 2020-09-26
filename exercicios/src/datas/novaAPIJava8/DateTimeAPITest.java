@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.util.Calendar;
-import java.util.Date;
 
 public class DateTimeAPITest {
 
@@ -13,8 +11,9 @@ public class DateTimeAPITest {
 	
 		// System.out.println(new Date()); //Modo muito antigo
 		// System.out.println(Calendar.getInstance()); //Modo antigo
+		
 		//Criado para trabalhar somente com datas!!
-		LocalDate data = LocalDate.of(2019, Month.JANUARY, 25); //Modo NOVO!
+		LocalDate data = LocalDate.of(2019, Month.FEBRUARY, 25); //Modo NOVO!
 		System.out.println(data);
 		System.out.println(data.getDayOfMonth());
 		System.out.println(data.getDayOfWeek());
@@ -26,8 +25,8 @@ public class DateTimeAPITest {
 		LocalDate now = LocalDate.now();
 		System.out.println(now);
 		System.out.println(LocalDate.MAX); //data maxima do LocalDate
-		
-		//Para horario:
+
+		//Para horas:
 		System.out.println("-----------LocalTime-----------");
 		LocalTime hora = LocalTime.of(23,2,15);
 		System.out.println(hora);

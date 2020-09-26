@@ -1,0 +1,226 @@
+DATAS:
+
+CLASSE DATE:
+
+Classe Date, classe antiga, os metodos maioria ficaram obsoletos!! Classe Calendar substituiu ela!
+No Java 8, fizeram tambem a classe Time melhor que as classes Date e o Calendar!
+
+Ex: Date date2 = new Date(parametro em milissegundos); -> essa uma das coisas que tornou a classe ruim por causa
+							do parametro e do tipo de formatacao da data que ele
+							retorna...
+
+Ex: Date dataAtual = new Date(); = retorna a data atual. R: Wed Sep 23 23:37:17 BRT 2020
+
+dataAtual.getTime() = retorna a data em milissegundos.
+
+Usando a classe Calendar...
+
+CLASSE CALENDAR:
+
+Calendar.SUNDAY = retorna o int de SUNDAY. R: 1 (é o primeiro dia da semana)
+
+Calendar c = Calendar.getInstance(); //obtem um calendario usando um time zone padrao!
+c.getFirstDayOfWeek() = obtem, em numero, o primeiro dia da semana. R: 1
+
+c.get(Calendar.DAY_OF_MONTH) = obtem o dia do mes. R: 23
+c.get(Calendar.DAY_OF_WEEK) = obtem o dia da semana. R: 4 (quarta-feira)
+c.get(Calendar.DAY_OF_YEAR) = obtem o dia do ano. R: 267 (de 365 dias)
+
+c1.add(Calendar.HOUR, 2) = adicionei 2 horas ao Calendar meu.
+c1.add(Calendar.MONTH, 3)  adicionei 3 meses ao Calendar meu.
+
+OBS: se eu mandar imprimir c1, que é do tipo Calendar, irá imprimir isso (java.util.GregorianCalendar[time=16087857759
+									  47,areFieldsSet=true,areAllFieldsSet=false,
+									lenient=true,zone=sun.util.calendar.ZoneInfo
+									[id="America/Sao_Paulo",offset=-10800000,
+									dstSavings=0,useDaylight=false,transitions=93,
+									lastRule=null],firstDayOfWeek=1, .............)
+Para mandar imprimir um estilo que dê pra entender a data e a hora, por isso que crio uma variavel que seja do tipo DATE:
+
+Date date1 = c1.getTime() = retorna um objeto Date com o valor do Calendar.
+System.out.println(date1); R: Thu Dec 24 01:59:41 BRT 2020
+
+COM ISSO, EVOLUIMOS PARA CLASSE DATEFORMAT...
+
+DATEFORMAT:
+
+CLASSE BOA PARA FORMATAR DATA E HORA.
+
+Calendar c = Calendar.getInstance(); //continuamos criando uma variavel c do tipo Calendar...
+DateFormat[] dfs = new DateFormat[6];
+dfs[0] = DateFormat.getInstance();				R: 24/09/2020 00:08	
+dfs[1] = DateFormat.getDateInstance();				R: 24 de set de 2020
+dfs[2] = DateFormat.getDateInstance(DateFormat.SHORT);		R: 24/09/2020
+dfs[3] = DateFormat.getDateInstance(DateFormat.MEDIUM);		R: 24 de set de 2020
+dfs[4] = DateFormat.getDateInstance(DateFormat.LONG);		R: 24 de setembro de 2020
+dfs[5] = DateFormat.getDateInstance(DateFormat.FULL);		R: quinta-feira, 24 de setembro de 2020
+
+Para imprimir:
+System.out.println(dfs[2].format(c.getTime()));
+
+PARA DATAS PERSONALIZADAS:
+
+SIMPLEDATEFORMAT:
+
+Calendar c = Calendar.getInstance();
+String mascara = "yyyy.MM.dd G 'as' HH:mm:ss z"; //esse pattern pega na documentacao
+SimpleDateFormat formatador = new SimpleDateFormat(mascara);
+System.out.println(formatador.format(c.getTime()));
+
+LOCALIZACAO, LINGUA (LOCALE):
+
+pt = portugues, br = brasil, en = ingles, etc.
+
+Locale locale = new Locale("pt");
+Locale locale1 = new Locale("en");
+
+Calendar c = Calendar.getInstance();
+c.set(2015, Calendar.DECEMBER, 23); //atribui uma data ao Calendar
+System.out.println(c.getTime()); //Sem o DateFormat, imprimindo no formato DATE!
+
+DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, locale); //Formato DateFormat, data inteira (FULL)
+System.out.println(df.format(c.getTime())); //Com o DateFormat. R: quarta-feira, 23 de dezembro de 2015 (locale pt)
+
+DateFormat df1 = DateFormat.getDateInstance(DateFormat.FULL, locale1); //Formato DateFormat, data inteira (FULL)
+System.out.println(df1.format(c.getTime())); //Com o DateFormat. R: Wednesday, December 23, 2015
+
+System.out.println(locale1.getDisplayLanguage()); //retorna a lingua do Locale
+
+NOVA API DO JAVA: JAVA.TIME:
+
+SOMENTE DATAS:
+
+LocalDate data = LocalDate.of(2019, Month.JANUARY, 25); //SETA UMA INSTANCIA DE LOCALDATE COM ANO,MES,DIA DO MES
+R: 2019-01-25
+
+DATA ATUAL:
+
+LocalDate now = LocalDate.now();
+System.out.println(now);
+
+ALGUNS MÉTODOS:
+
+data.getDayOfMonth() = EXIBE O DIA DO MES. R: 25
+data.getMonthValue() = EXIBE O MES EM INT. R: 1
+data.getYear() = EXIBE O ANO. R: 2019
+data.getDayOfWeek() = EXIBE O DIA DA SEMANA. R: FRIDAY
+data.getMonth() = EXIBE O MES EM STRING. R: JANUARY
+data.lengthOfMonth() = EXIBE O TAMANHO DO MES. R: 31 DIAS
+data.isLeapYear() = ESSE ANO É BISSEXTO?
+LocalDate.ofEpochDay(30000) = RETORNA A DATA DE ACORDO COM QTD DE DIAS Q COLOCAMOS NO PARAM.
+LocalDate.ofYearDay(2020, 360) = RETORNA A DATA DE ACORDO COM O ANO E A QTD DE DIAS
+LocalDate.parse("2020-12-25") = CONVERTE UM DATA STRING PARA UM LOCALDATE
+data.toString() = obter o LocalDate como String
+data.isAfter(now) = Compara datas! data é depois de now? R: false
+data.isBefore(now) = Compara datas! data é antes de now? R: true
+data.equals(now) = Compara datas! data é igual a now? R: false
+data.minusDays(24) = subtrai dias de uma data.
+data.minusMonths()
+data.minusYears()
+data.minusWeeks()
+data.withDayOfYear(5) = altera o dia da data.
+data.withMonth(5) = altera o mes do data.
+data.withYear(year) = altera o ano da data.
+LocalDate.MAX = data maxima do LocalDate
+
+CONVERTER DATA EM STRING:
+
+LocalDate data = LocalDate.now();
+String s1 = data.format(DateTimeFormatter.BASIC_ISO_DATE); R: 20200924
+String s2 = data.format(DateTimeFormatter.ISO_DATE); R: 2020-09-24
+
+CONVERTER STRING EM DATA:
+
+String s3 = "20200902";
+String s4 = "2020-09-02";
+LocalDate parse1 = LocalDate.parse(s3, DateTimeFormatter.BASIC_ISO_DATE); R: 2020-09-02
+LocalDate parse2 = LocalDate.parse(s4, DateTimeFormatter.ISO_DATE); R: 2020-09-02
+
+PARA RETORNAR PERIODOS DE ACORDO COM UM PADRAO:
+
+QUERO QUE EXIBA TODO DIA 25 DO ANO DE 2019 DE JANEIRO A ABRIL:
+LocalDate data = LocalDate.of(2019, Month.JANUARY, 25);
+LocalDate data123 = LocalDate.of(2019, Month.MAY, 25);
+Period p = Period.ofMonths(1); //PERIODO DE 1 MES EM 1 MES
+Consumer<LocalDate> consumerdatas = ld -> System.out.println(ld);
+Stream<LocalDate> datas = data.datesUntil(data123, p);
+datas.forEach(consumerdatas);
+R: 2019-01-25
+   2019-02-25
+   2019-03-25
+   2019-04-25
+
+PARA GERAR DATAS DIA A DIA:
+
+LocalDate data = LocalDate.now(); // 24/09/2020
+LocalDate ld = LocalDate.of(2020, Month.DECEMBER, 24); //  24/12/2020
+Stream<LocalDate> sld = data.datesUntil(ld); //CRIO UM STREAM PARA ARMAZENAR AS DATAS
+Consumer<LocalDate> consumerdatas = d -> System.out.println(d); //CRIO UM CONSUMER PARA ITERAR
+sld.forEach(consumerdatas); //ITERO
+
+R:
+2020-09-24
+2020-09-25
+2020-09-26
+2020-09-27
+2020-09-28
+2020-09-29
+2020-09-30
+2020-10-01
+2020-10-02
+... ATÉ
+2020-12-23
+
+SOMENTE HORAS:
+
+LocalTime hora = LocalTime.of(23,2,15); = SETO UMA HORA QUALQUER. R: 23:02:15
+LocalTime.of(23, 10) = só exibe hora e minuto. Ex: 23:10
+LocalTime.now() = Exibe a hora atual
+
+ALGUNS METODOS:
+
+hora.getHour() = EXIBE A HORA
+hora.getMinute() = EXIBE O MINUTO
+hora.getSecond() = EXIBE O SEGUNDO
+LocalTime.MAX = EXIBE A HORA MAXIMA
+toSecondOfDay() = Exibe qtd de segundos DO DIA.
+ALGUNS METODOS PARECIDOS COM DO LOCALDATE...
+
+DATAS E HORAS:
+
+LocalDateTime ldt1 = LocalDateTime.now(); = Data e hora atual.
+LocalDateTime ldt2 = LocalDateTime.of(2019, 01, 25, 8, 35, 26); = data e hora qlq
+
+ALGUNS METODOS:
+
+data.atTime(10, 20, 30) = Altera apenas as horas da seguinte data.
+ldt1.getDayOfMonth() = retorna o dia do mes
+ldt1.getMinute() = retorna os minutos da hora.
+ldt1.toLocalDate() = converte um LocalDateTime para LocalDate.
+ldt1.toLocalTime() = converte um LocalDateTime para LocalTime.
+ALGUNS METODOS PARECIDOS COM DO LOCALDATE...
+
+DURATION:
+
+CALCULA O INTERVALO DE TEMPO ENTRE DOIS PERIODOS DE HORAS. Nao pode usar LocalDate.
+
+Ex:
+LocalTime time1 = LocalTime.now(); 16H50MIN
+LocalTime time2 = LocalTime.of(5,0,0);
+Duration d2 = Duration.between(time1, time2); R: PT-89H-53M-50.1032255S
+
+Ex:
+LocalDateTime dt1 = LocalDateTime.now(); // 24/09/2020
+LocalDateTime dt2 = LocalDateTime.of(2020, Month.SEPTEMBER, 20, 23,0,0);
+Duration d1 = Duration.between(dt1, dt2); R: PT-11H-53M-50.1042262S
+
+OBS: podemos misturar LocalDateTime com LocalTime no Duration, só se o 2° arg do método for LocalDateTime!
+Duration d3 = Duration.between(time1, dt1);
+
+PERIOD:
+
+CALCULA O INTERVALO DE DATAS.
+
+LocalDateTime dt1 = LocalDateTime.now(); // 24/09/2020
+LocalDateTime dt2 = LocalDateTime.of(2020, Month.SEPTEMBER, 20, 23,0,0);
+Period p1 = Period.between(dt2.toLocalDate(), dt1.toLocalDate()); R: 4D

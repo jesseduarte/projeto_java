@@ -18,7 +18,7 @@ public class CheckedExceptionTest {
 	public static void criarArquivo() throws IOException{ //agora a responsabilidade de tratar a excecao é do metodo main, pq eu acho esse metodo nele!!!
 
 		//IOException é uma classe que é checked (que deve ser tratada, nao compila senao tratar!)
-		File file = new File("C:/projeto_java/exercicios/src/teste.txt");
+		File file = new File("X:/projeto_java/exercicios/src/teste.txt");
 		System.out.println("Arquivo criado: " + file.createNewFile());
 		System.out.println("Arquivo criado");
 	}

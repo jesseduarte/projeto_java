@@ -17,6 +17,13 @@ public class Fila {
 		filaBanco.offer("Daniel");
 		filaBanco.add("Rafaela");
 		filaBanco.offer("Gui");
+		filaBanco.offer("Gui");
+		
+		for(String fb: filaBanco) {
+			System.out.println(fb);
+		}
+		
+		System.out.println("");
 		
 		//diferenca do peek() pro element(). Quando a fila estiver vazia: element() = lança uma excecao. peek() = retorna null.
 		

@@ -7,7 +7,6 @@ public class StringBuilderTeste {
 		String s = "Uma frase comum";
 		StringBuilder sb = new StringBuilder(16); //O valor do construtor é o tamanho do seu sb...Se deixar em branco, por default, será 16 caracteres!
 		StringBuilder sb1 = new StringBuilder("1234");
-		
 		s.concat(" test");
 		System.out.println(s); //ele nao vai imprimir o test, pq a String é imutavel, teria que criar uma nova String para receber essa nova String (com concat)
 		//Já o sb é diferente, quando damos o append() (parecido com o concat()) ele vai usar a mesma sb que criamos (reutiliza a mesma String)!!
