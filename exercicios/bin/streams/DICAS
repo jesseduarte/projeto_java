@@ -1,0 +1,337 @@
+DICAS:
+
+STREAMS (CONTINUACAO):
+
+Usando uma interface funcional para imprimir qlq tipo e objeto:
+
+Consumer<String> print = System.out::print;
+
+Stream<String> langs = Stream.of("Java ", " Lua ", "JS\n"); //criando uma Stream de Strings
+
+Formas rapidas de criar stream e iterar neles:
+
+String[] maisLangs = {"Python ", "Lisp ", "Perl ", "Go\n"};
+
+Stream.of(maisLangs).forEach(print); //outro jeito de criar Stream
+Arrays.stream(maisLangs).forEach(print); //outro jeito de criar Stream
+Arrays.stream(maisLangs, 1, 3).forEach(print); //criando um stream pegando do array de indice 1 e indo ate o indice 3 (excluindo ele)
+
+List<String> outrasLangs = Arrays.asList("C ", "PHP ", "Kotlin\n");
+outrasLangs.stream().forEach(print); //criando uma stream a partir de uma lista
+outrasLangs.parallelStream().forEach(print); //criando um parallelStream (usa mt em threads) a partir de uma lista.
+
+Imprimindo objetos:
+
+Usando o Iterator:
+
+List<String> aprovados = Arrays.asList("Lu", "Gui", "Luca", "Ana");
+
+Iterator<String> it = aprovados.iterator();     //usa os metodos do Iterator<> na lista aprovados
+while(it.hasNext()) {  				//Enquanto existir proximo na lista, faça...
+	System.out.println(it.next());
+}
+
+Usando stream:
+
+List<String> aprovados = Arrays.asList("Lu", "Gui", "Luca", "Ana");
+
+Stream<String> st = aprovados.stream()
+st.forEach(System.out::println);
+
+Boa prática (criar classe para armazenar as minhas expressoes lambdas):
+
+public class Utilitarios {
+	
+	public final static Consumer<String> print = System.out::print;
+	public final static UnaryOperator<String> maiusculo = n -> n.toUpperCase();
+	public final static UnaryOperator<String> primeiraLetra = n -> n.charAt(0) + ""; //Concatenei um caracter com uma string vazia que ira resultar numa string.		
+
+	public final static String grito(String n) { //metodo normal
+		return n + "!!!";
+	} 
+}
+
+Usando o método Map():
+
+Mapeia o stream anterior transforma em um novo stream processado!!
+
+public static void main(String[] args) {
+		
+	List<String> marcas = Arrays.asList("BMW ", "Audi ", "Honda ");
+		
+	//o map() ele mapeia o stream anterior transforma em um novo stream processado!!
+	marcas.stream().map(m -> m.toUpperCase()).forEach(Utilitarios.print);
+		
+	System.out.println("\nUsando composicao...");
+	marcas.stream()
+		.map(Utilitarios.maiusculo)
+		.map(Utilitarios.primeiraLetra)
+		.map(Utilitarios::grito)
+		.forEach(Utilitarios.print);
+}
+
+Se tiver uma funcao pronta (Ex: println, toBinaryString,etc.), nao precisa criar expressoes lambdas!! So criar expressoes
+lambdas para funcoes nao prontas!!
+
+Ex:
+
+public static void main(String[] args) {
+		
+	List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9);
+		
+	UnaryOperator<String> inversao = 
+			s -> new StringBuilder(s).reverse().toString(); //toString() foi para converter o StringBuilder 
+									  para String!
+
+	Function<String, Integer> conversaoInteiro = s -> Integer.parseInt(s, 2);
+		
+	nums.stream()
+	             .map(Integer::toBinaryString)
+		     .map(inversao)
+		     .map(conversaoInteiro)
+		     .forEach(System.out::println);
+}
+
+Usando o método filter():
+
+Filtra o stream de acordo com uma condicao e cria um novo stream!!
+
+public class Aluno {
+	
+	final String nome;
+	final double nota;
+	
+	public Aluno(String nome, double nota) {
+		this.nome = nome;
+		this.nota = nota;
+	}
+}
+
+public class Filter {
+	
+	public static void main(String[] args) {
+
+		Aluno a1 = new Aluno("Ana", 7.8);
+		Aluno a2 = new Aluno("Bia", 5.8);
+		Aluno a3 = new Aluno("Daniel", 9.8);
+		Aluno a4 = new Aluno("Gui", 6.8);
+		Aluno a5 = new Aluno("Rebeca", 7.1);
+		Aluno a6 = new Aluno("Pedro", 8.8);
+		
+		List<Aluno> alunos = Arrays.asList(a1,a2,a3,a4,a5,a6);
+
+		alunos.stream()
+			       .filter(a -> a.nota >= 7.0) //criou uma condicao e o novo stream
+			       .map(a -> "Parabéns " + a.nome + "! Você foi aprovado(a)!") //mapeia o resultado do novo stream e adiciona essa frase para cada um
+			       .forEach(System.out::println); //exibe na tela
+
+		/* Tambem posso fazer assim:
+
+		 Predicate<Aluno> aprovados = a -> a.nota >= 7.0;
+        	Function<Aluno, String> saudacaoAprovados = a -> 
+								"Parabéns " + a.nome + "! Você foi aprovado(a)!";
+		alunos.stream()
+		.filter(aprovados)
+		.map(saudacaoAprovados)
+		.forEach(System.out::println);
+		  
+		 */
+	}
+}
+
+Ex:
+
+public class Produto {
+
+	final String nome;
+	final double preco;
+	final double desconto;
+	final double frete;
+	
+	public Produto(String nome, double preco, double desconto, double frete) {
+		this.nome = nome;
+		this.preco = preco;
+		this.desconto = desconto;
+		this.frete = frete;
+	}	
+}
+
+public class DesafioFilter {
+
+	public static void main(String[] args) {
+		
+		Produto p1 = new Produto("Notebook", 3500.00, 0.3, 0.0);
+		Produto p2 = new Produto("Geladeira", 2200.00, 0.4, 10.0);
+		Produto p3 = new Produto("Fogao", 1000.00, 0.35, 0.0);
+		Produto p4 = new Produto("Cama", 1500.00, 0.1, 20.00);
+		Produto p5 = new Produto("Armario", 1000.00, 0.32, 0.0);
+		
+		List<Produto> produtos = Arrays.asList(p1, p2, p3, p4, p5);
+		
+		Predicate<Produto> descMaior30 = p -> p.desconto >= 0.3;
+		Predicate<Produto> freteGratis = p -> p.frete == 0.0;
+		Function<Produto, String> exibirProdutos = p -> 
+								p.nome + " custando " + p.preco + "(SUPER PROMOCAO)";
+		
+		produtos.stream()
+				.filter(descMaior30)
+				.filter(freteGratis)
+				.map(exibirProdutos)
+				.forEach(System.out::println);												
+	}
+}
+
+Usando o metodo reduce():
+
+nums.stream().reduce(accumulator) = o accumulator é um BinaryOperator<T>. O retorno é um Optional<T>. Esse metodo é
+				    tipo um for acumulador, vai somando cada elemento!!
+
+nums.stream().reduce(int a, BinaryOperator<T>) = tem valor inicial "a" e depois coloca-se o BinaryOperator.
+
+O reduce() é um Optional(estrutura), quer dizer que se nao tiver nada pra acumular na lista irá retornar null!!
+		
+Por isso que colocamos a variavel do tipo Integer e nao int, porque o tipo int nao consegue receber null!!
+
+Ex:
+
+public static void main(String[] args) {
+		
+	List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9);
+
+	BinaryOperator<Integer> soma = (ac, n) -> ac + n;
+
+	Integer total1 = nums.stream().reduce(soma).get(); //Quando nao tem valor inicial, colocar o get()
+	System.out.println(total1);
+
+	Integer total2 = nums.stream().reduce(100, soma); //reduce(100,soma) o 100 é um valor inicial que irá somar com a lambda soma (usando stream())
+	System.out.println(total2);
+	
+	Integer total3 = nums.parallelStream().reduce(100, soma); //reduce(100,soma) o 100 é um valor inicial que irá somar cada elemento da lambda soma e depois somar todos juntos (usando parallelStream())
+	System.out.println(total3);
+		
+	nums.stream()
+	             .filter(n -> n > 5)
+		     .reduce(soma)
+		     .ifPresent(System.out::println); //só irá exibir, se estiver.
+}
+
+Ex:
+
+public class Aluno {
+	
+	final String nome;
+	final double nota;
+	
+	public Aluno(String nome, double nota) {
+		this.nome = nome;
+		this.nota = nota;
+	}
+
+public class Reduce2 {
+	
+	public static void main(String[] args) {
+		
+		Aluno a1 = new Aluno("Ana", 7.1);
+		Aluno a2 = new Aluno("Luna", 6.1);
+		Aluno a3 = new Aluno("Gui", 8.1);
+		Aluno a4 = new Aluno("Gabi", 10);
+		
+		List<Aluno> alunos = Arrays.asList(a1,a2,a3,a4);
+		
+		Predicate<Aluno> aprovado = a -> a.nota >= 7;
+		Function<Aluno, Double> getNota = a -> a.nota;
+		BinaryOperator<Double> somatorio = (a, b) -> a + b;
+		
+		alunos.stream()
+			.filter(aprovado)
+			.map(getNota)
+			.reduce(somatorio)
+			.ifPresent(System.out::println);
+	}
+}
+
+Usando os metodos min() e max():
+
+Retornam um Optional<T> e recebem como parametro um Comparator<T>.
+
+Ex:
+
+public static void main(String[] args) {
+		
+	Aluno a1 = new Aluno("Ana", 7.1);
+	Aluno a2 = new Aluno("Luna", 6.1);
+	Aluno a3 = new Aluno("Gui", 8.1);
+	Aluno a4 = new Aluno("Gabi", 10);
+		
+	List<Aluno> alunos = Arrays.asList(a1,a2,a3,a4);
+		
+	Comparator<Aluno> melhorNota = (aluno1, aluno2) -> {
+		if(aluno1.nota > aluno2.nota) return 1;
+		if(aluno1.nota < aluno2.nota) return -1;
+		return 0;
+	};
+		
+	System.out.println(alunos.stream().max(melhorNota).get()); //valor maximo
+	System.out.println(alunos.stream().min(melhorNota).get()); //valor minimo
+} 
+
+Usando o metodo Match():
+
+allMatch(Predicate) = retorna true se todos os elementos satisfizerem a condicao
+anyMatch(Predicate) = retorna true se qualquer elemento satisfizer a condicao
+noneMatch(Predicate) = retorna true se nenhum elemento satistizer a condicao
+
+Ex:
+
+public static void main(String[] args) {
+		
+	Aluno a1 = new Aluno("Ana", 7.1);
+	Aluno a2 = new Aluno("Luna", 6.1);
+	Aluno a3 = new Aluno("Gui", 8.1);
+	Aluno a4 = new Aluno("Gabi", 10);
+	
+	List<Aluno> alunos = Arrays.asList(a1,a2,a3,a4);
+		
+	Predicate<Aluno> aprovado = a -> a.nota >= 7;
+	Predicate<Aluno> reprovado = aprovado.negate();
+		
+	System.out.println(alunos.stream().allMatch(aprovado)); //Todos os alunos foram aprovados? False!
+	System.out.println(alunos.stream().anyMatch(aprovado)); //Alguem foi aprovado?
+	System.out.println(alunos.stream().noneMatch(reprovado)); //Nenhum foi aprovado?
+}
+
+METODOS STREAM:
+
+Stream.of() = retorna um stream.
+Stream.concat(a,b) = concatena dois streams e gera um novo stream.
+Stream.empty() = retorna um stream vazio.
+Stream.generate(nums) = retorna um sequencia infinita de um Supplier especificado.
+Stream.iterate(0, nums) = gera uma sequencia infinita de um Unary Operator.
+
+marcas.stream().map(Function) = mapeia o stream anterior transforma em um novo stream processado. Pode ter varios maps.
+Ex: marcas.stream().map(m -> m.toUpperCase())
+
+alunos.stream().filter(Predicate) = Filtra o stream de acordo com uma condicao e cria um novo stream!!
+Ex: alunos.stream().filter(a -> a.nota >= 7.0)
+
+nums.stream().reduce(accumulator) = o accumulator é um BinaryOperator<T>. O retorno é um Optional<T>. Esse metodo é
+				    tipo um for acumulador, vai somando cada elemento!!
+
+nums.stream().reduce(int a, BinaryOperator<T>) = tem valor inicial "a" e depois coloca-se o BinaryOperator.
+alunos.stream().min(Comparator<T>).get() = retorna o valor minimo.
+alunos.stream().max(Comparator<T>).get() retorna o valor maximo.
+alunos.stream().allMatch(Predicate) = retorna true se todos os elementos satisfizerem a condicao
+alunos.stream().anyMatch(Predicate) = retorna true se qualquer elemento satisfizer a condicao
+alunos.stream().noneMatch(Predicate) = retorna true se nenhum elemento satistizer a condicao
+alunos.stream().distinct() = retorna elementos distintos.
+alunos.stream().skip(n int) = pula n elementos.
+alunos.stream().limit(n int) = quero até n elementos.
+
+alunos.stream().takeWhile(Predicate) = pega o elemento até satisfizer essa condicao, se tiver alguem no meio que nao 
+					satisfaz essa condicao, ele dá um break!!
+
+alunos.stream().count() = retorna a qtd de elementos do stream.
+...CONTINUAR
+METODOS DA CLASSE OPTIONAL:
+
+...CONTINUAR

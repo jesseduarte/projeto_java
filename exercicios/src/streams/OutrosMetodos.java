@@ -31,8 +31,13 @@ public class OutrosMetodos {
 		System.out.println("\ntakeWhile");
 		alunos.stream()
 			.distinct()
-			.takeWhile(a -> a.nota >= 7) //pega o elemento até satisfizer essa condicao, se tiver alguem no meio que nao satisfaz essa condicao, ele dá um break!!
+			.takeWhile(a -> a.nota >= 8) //pega o elemento até satisfizer essa condicao, se tiver alguem no meio que nao satisfaz essa condicao, ele dá um break!!
 			.skip(1)
 			.forEach(System.out::println);
+		
+		System.out.println("");
+		//alunos.stream()
+		//.dropWhile(a -> a.nota > 7.0)
+		//.forEach(System.out::println);
 	}
 }

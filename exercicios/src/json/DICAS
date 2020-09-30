@@ -1,0 +1,46 @@
+DICAS:
+
+JSON:
+
+public class Aluno {
+
+	private String matricula;
+	private String nome;
+	private Timestamp nascimento;
+	private int idade;
+	
+	public Aluno() {}
+	
+	public Aluno(JSONObject json) {  //Construtor do JSON. Converte JSON para OBJETO!
+		this.matricula = json.getString("matricula");
+		this.nome = json.getString("nome");
+		this.nascimento = (Timestamp) json.get("nascimento");
+		this.idade = json.getInt("idade");
+	}
+
+	public JSONObject toJson() { //Converte OBJETO para JSON!
+		org.json.JSONObject json = new JSONObject();
+		json.put("matricula",this.matricula); //insere um atributo no JSON
+		json.put("nome",this.nome);
+		json.put("nascimento",this.nascimento);
+		json.put("idade",this.idade);
+		
+		return json;
+	}
+METODOS GETTERS E SETTERS...
+
+public class JsonTest {
+
+	public static void main(String[] args) {
+		
+		Aluno a = new Aluno();
+		a.setNome("Jesse");
+		a.setMatricula("111");
+		a.setIdade(28);
+		a.setNascimento(Timestamp.valueOf("1992-01-25 00:00:00"));
+		System.out.println(a.toJson().toString());
+		
+		Aluno b = new Aluno(a.toJson());
+		System.out.println("Nome: " + b.getNome());
+	}
+}

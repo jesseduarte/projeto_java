@@ -6,6 +6,7 @@ public class Predicado {
 
 	public static void main(String[] args) {
 		
+		//PREDICATE		 	    T -> boolean
 		//Predicate<T> entrada dele é qlq tipo e a saida retorna um booleano!
 		
 		Predicate<Produto> isCaro = prod -> (prod.preco * (1 - prod.desconto)) >= 750;

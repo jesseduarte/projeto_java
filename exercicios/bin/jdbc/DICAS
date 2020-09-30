@@ -1,0 +1,232 @@
+DICAS:
+
+JDBC:
+
+CRIAR E/OU OBTER CONEXAO DO BANCO:
+
+final String url = "jdbc:mysql://localhost/curso_java?useTimezone=true&serverTimezone=America/Sao_Paulo";
+final String usuario = "root";
+final String senha = "jes250192";
+		
+Connection conexao = DriverManager.getConnection(url, usuario, senha); //realiza conexao com o banco
+System.out.println("Conexao realizada!");
+conexao.close();
+
+FABRICA DE CONEXAO:
+
+public static Connection getConexao() {
+		
+	try {
+		final String url = "jdbc:mysql://localhost/curso_java?serverTimezone=UTC";
+		final String usuario = "root";
+		final String senha = "jes250192";
+
+		Connection conexao = DriverManager.getConnection(url, usuario, senha);
+		return conexao;
+			
+	} catch(SQLException e) {
+		throw new RuntimeException(e);
+	  }
+}
+
+FABRICA DE CONEXAO PROPERTIES (MODO MAIS ATUAL):
+
+Arquivo conexao.properties:
+
+<!-- Externalizando a fabrica de conexao do banco usando o arquivo conexao.proprties. -->
+<!-- O Java irá reconhecer esse arquivo irá transformar ele em bytecode. -->
+<!-- Esse arquivo é do tipo chave/valor. -->
+banco.url=jdbc:mysql://localhost/curso_java?serverTimezone=UTC
+banco.usuario=root
+banco.senha=jes250192
+
+public static Connection getConexao() {
+		
+	try {
+		Properties prop = getProperties();
+		final String url = prop.getProperty("banco.url");
+		final String usuario = prop.getProperty("banco.usuario");
+		final String senha = prop.getProperty("banco.senha");
+
+		Connection conexao = DriverManager.getConnection(url, usuario, senha);
+		return conexao;
+			
+	} catch(SQLException | IOException e) {
+		throw new RuntimeException(e);
+	  }
+}
+	
+	//Classe Properties é usada para pegar esse arquivo e ler os valores.
+	private static Properties getProperties() throws IOException { //metodo para obter as props da conexao
+		Properties prop = new Properties();
+		String path = "conexao.properties"; //nome do arquivo
+		prop.load(FabricaConexaoProp.class.getClassLoader().getResourceAsStream(path));
+		return prop;
+	}
+
+METODOS CONNECTION:
+
+conexao.getNetworkTimeout() = retorna em milissegundos o tempo que do driver esperará para um BD complete sua request.
+conexao.getCatalog() = retorna o nome do BD
+conexao.getTransactionIsolation() = retorna o nivel de isolamento do BD.
+conexao.isClosed() = verifica se a conexao esta fechada.
+
+CRIAR BANCO:
+
+public static void main(String[] args) throws SQLException {
+		
+	Connection conexao = FabricaConexaoProp.getConexao(); //Abre conexao.
+		
+	Statement stmt = conexao.createStatement(); //Cria declaracao
+	stmt.execute("CREATE DATABASE curso_java"); //Executa a declaracao (booleano)
+	
+	System.out.println("Banco criado com sucesso!");
+	conexao.close();
+}
+
+CRIAR TABELA:
+
+public static void main(String[] args) throws SQLException {
+		
+	Connection conexao = FabricaConexao.getConexao();
+		
+	String sql = "CREATE TABLE pessoas ("
+			+"codigo INT AUTO_INCREMENT PRIMARY KEY,"
+			+"nome VARCHAR(80) NOT NULL"
+			+")";
+		
+	Statement stmt = conexao.createStatement();
+	stmt.execute(sql);
+		
+	System.out.println("Tabela criada com sucesso!");
+	conexao.close();
+}
+
+INSERIR REGISTRO:
+
+public static void main(String[] args) throws SQLException {
+		
+	Scanner entrada = new Scanner(System.in);
+	System.out.println("Informe o nome: ");
+	String nome = entrada.nextLine();
+
+	Connection conexao = FabricaConexao.getConexao();
+
+//	String sql = "INSERT INTO pessoas (nome) VALUES ('" + nome + "')"; //NAO fazer isso, ('" + nome + "')" -> causa de SQL Injection
+	String sql = "INSERT INTO pessoas (nome) VALUES (?)";
+	System.out.println(sql);
+		 
+	PreparedStatement pstmt = conexao.prepareStatement(sql); //O PreparedStatement é mais seguro contra SQLInjection do que o Statement!!
+	pstmt.setString(1, nome); //coloca o indice 1 (pq so tem ele) e o valor do nome
+	pstmt.execute();
+		
+	System.out.println("Pessoa incluida com sucesso!");
+	entrada.close();		
+}
+
+CONSULTAR REGISTRO SEM WHERE:
+
+public static void main(String[] args) throws SQLException{
+		
+	Connection conexao = FabricaConexaoProp.getConexao();
+	String sql = "SELECT * FROM pessoas";
+		
+	Statement stmt = conexao.createStatement();
+	ResultSet rs = stmt.executeQuery(sql); //como quero retornar um valor do banco (select) nao uso o execute() e sim o executeQuery()!!
+		
+	List<Pessoa> pessoas = new ArrayList<>();
+		
+	//Como vou receber multiplas linhas, logo jogarei ele no while:
+	while(rs.next()) {
+		int codigo = rs.getInt("codigo");
+		String nome = rs.getString("nome");
+		pessoas.add(new Pessoa(codigo, nome));
+	}
+		
+	for(Pessoa p: pessoas) {
+		System.out.println(p.getCodigo() + "------" + p.getNome());
+	}
+		
+	conexao.close();		
+}
+
+CONSULTAR REGISTRO COM WHERE:
+
+public static void main(String[] args) throws SQLException{
+		
+	Scanner entrada = new Scanner(System.in);
+		
+	Connection conexao = FabricaConexao.getConexao();
+	String sql = "SELECT * FROM pessoas WHERE nome LIKE ?"; //O Percentual(%) so passa quando passar o parametro!
+		
+	System.out.println("Informe o valor para a pesquisa: ");
+	String valor = entrada.nextLine();
+		
+	PreparedStatement pstmt = conexao.prepareStatement(sql);
+	pstmt.setString(1, "%" + valor + "%");
+		
+	ResultSet rs = pstmt.executeQuery(); 
+		
+	List<Pessoa> pessoas = new ArrayList<>();
+		
+	//Como vou receber multiplas linhas, logo jogarei ele no while:
+	while(rs.next()) {
+		int codigo = rs.getInt("codigo");
+		String nome = rs.getString("nome");
+		pessoas.add(new Pessoa(codigo, nome));
+	}
+		
+	for(Pessoa p: pessoas) {
+		System.out.println(p.getCodigo() + "------" + p.getNome());
+	}
+		
+	entrada.close();
+	pstmt.close();
+	conexao.close();		
+}
+
+ALTERANDO UM REGISTRO:
+
+public static void main(String[] args) throws SQLException {
+
+	Scanner entrada = new Scanner(System.in);
+	System.out.println("Informe o ID: "); 
+	int id = entrada.nextInt();
+	entrada.nextLine();
+
+	System.out.println("Digite um novo nome: ");
+	String novoNome = entrada.nextLine();
+		
+	String sql = "UPDATE pessoas SET nome = ? where codigo = ?";
+	pstmt = conexao.prepareStatement(sql);
+	pstmt.setString(1, novoNome);
+	pstmt.setInt(2, id);
+	pstmt.execute();
+	pstmt.close();
+}
+
+DELETANDO UM REGISTRO:
+
+public static void main(String[] args) throws SQLException {
+		
+	Scanner entrada = new Scanner(System.in);
+	System.out.println("Informe o codigo: ");
+	int codigo = entrada.nextInt();
+		
+	Connection conexao = FabricaConexao.getConexao();
+	String sql = "DELETE FROM pessoas where codigo = ?";
+		
+	PreparedStatement pstmt = conexao.prepareStatement(sql);
+	pstmt.setInt(1, codigo);
+		
+	if(pstmt.executeUpdate() > 0) {
+		System.out.println("Pessoa excluida com sucesso!");
+	} else {
+		System.out.println("Nada feito!");
+	}
+		
+	entrada.close();
+	pstmt.close();
+	conexao.close();
+}
+

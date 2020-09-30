@@ -8,11 +8,11 @@ public class Consumidor {
 
 	public static void main(String[] args) {
 		
+		//CONSUMER			    T -> NADA
 		//Consumer<T> tem entrada algum valor(qlq tipo) e nao retorna nada!!
 		
 		Consumer<Produto> imprimir = p -> System.out.println(p.nome);
 		Produto p1 = new Produto("Caneta", 12.54, 0.09);
-		imprimir.accept(p1);
 		
 		Produto p2 = new Produto("Notebook", 3800.00, 0.15);
 		Produto p3 = new Produto("Caderno", 20.00, 0.15);

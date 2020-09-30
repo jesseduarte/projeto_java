@@ -7,6 +7,8 @@ public class OperadorBinario {
 
 	public static void main(String[] args) {
 		
+		//BINARY OPERATOR		(T,T) -> T (os dois do mesmo tipo)
+		
 		BinaryOperator<Double> media = (n1,n2) -> (n1 + n2)/2;
 		
 		System.out.println(media.apply(9.0, 7.0));

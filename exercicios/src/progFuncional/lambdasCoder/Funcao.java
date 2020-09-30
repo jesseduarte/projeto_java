@@ -6,6 +6,7 @@ public class Funcao {
 
 	public static void main(String[] args) {
 		
+		//FUNCTION			    S -> T (os dois de tipos diferentes)
 		//Funcao<T, R> tem entrada um tipo qlq e retorna um tipo qlq!!
 		
 		Function<Integer, String> parOuImpar = 

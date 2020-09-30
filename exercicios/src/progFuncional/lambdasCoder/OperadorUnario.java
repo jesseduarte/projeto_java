@@ -6,6 +6,7 @@ public class OperadorUnario {
 	
 	public static void main(String[] args) {
 		
+		//UNARY OPERATOR		    T -> T (os dois do mesmo tipo)
 		//Pode ser muito usado quando:
 		//recebe um numero, retorna um cliente;
 		//recebe uma lista e retorna uma outra lista;

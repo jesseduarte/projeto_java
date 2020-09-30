@@ -25,7 +25,7 @@ public class Reduce1 {
 		
 		Integer total2 = nums.stream().reduce(100, soma); //reduce(100,soma) o 100 é um valor inicial que irá somar com a lambda soma (usando stream())
 		System.out.println(total2);
-		
+	
 		Integer total3 = nums.parallelStream().reduce(100, soma); //reduce(100,soma) o 100 é um valor inicial que irá somar cada elemento da lambda soma e depois somar todos juntos (usando parallelStream())
 		System.out.println(total3);
 		

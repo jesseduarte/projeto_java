@@ -22,8 +22,6 @@ public class CalculoTeste2 {
 		
 		//O BinaryOperator<T> realiza operacoes com dois parametros do MESMO tipo!!
 		//Posso fazer com ele tambem, pegar duas listas e retornar uma nova lista,
-		//receber duas strings e concatenar elas, etc.
-		
-		
+		//receber duas strings e concatenar elas, etc.		
 	}
 }

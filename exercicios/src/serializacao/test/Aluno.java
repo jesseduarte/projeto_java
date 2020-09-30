@@ -4,15 +4,16 @@ import java.io.Serializable;
 
 public class Aluno implements Serializable {
 	
-	//Serialização = stream de objetos, vai passar varios dados de um objeto em um fluxo.
-	//jogar esses dados do objeto para um arquivo.
+	//Serialização = stream de objetos, vai passar varios dados de um objeto em um 
+	//fluxo. jogar esses dados do objeto para um arquivo.
+
 	/*
 	 Depois que um objeto for serializado ele pode ser gravado (ou persistido) em um 
-	 arquivo de dados e recuperado do arquivo e desserializado para recriar o objeto na 
-	 memória.
+	 arquivo de dados. E recuperado do arquivo e desserializado para recriar o objeto 
+	 na memória.
 	 
-	 Com a transformação do objeto em bytes é possível enviar o objeto por uma rede, ou 
-	 salvá-lo em um arquivo ou em um banco de dados.
+	 Com a transformação do objeto em bytes é possível enviar o objeto por uma rede, 
+	 ou salvá-lo em um arquivo ou em um banco de dados.
 	 */
 	
 	private static final long serialVersionUID = 1L;

@@ -1,0 +1,92 @@
+DICAS:
+
+SERIALIZACAO:
+
+ALUNO.JAVA:
+
+public class Aluno implements Serializable { //COLOCAR O IMPLEMENTS SERIALIZABLE!!
+	
+	//Serialização = stream de objetos, vai passar varios dados de um objeto em um 
+	//fluxo. jogar esses dados do objeto para um arquivo.
+
+	/*
+	 Depois que um objeto for serializado ele pode ser gravado (ou persistido) em um 
+	 arquivo de dados. E recuperado do arquivo e desserializado para recriar o objeto 
+	 na memória.
+	 
+	 Com a transformação do objeto em bytes é possível enviar o objeto por uma rede, 
+	 ou salvá-lo em um arquivo ou em um banco de dados.
+	 */
+	
+	private static final long serialVersionUID = 1L;
+	private long id;
+	private String nome;
+	private transient String password; //estou falando para nao serializar esse atributo. Ele retorna null
+	private static String nomeEscola = "DevDojo";
+	private Turma turma;
+	
+	public Aluno(long id, String nome, String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Aluno (" + "id=" + id +  
+					", nome=" + nome + "(" +
+					", password=" + password + "(" +
+					", nomeEscola=" + nomeEscola + "(" +
+					", turma=" + turma + "(" +
+					")";
+	}
+METODOS GETTERS E SETTERS OMITIDOS...
+}
+
+TURMA.JAVA:
+
+public class Turma implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	private String nome;
+
+	public Turma(String nome) {
+		this.nome = nome;
+	}
+	
+	@Override
+	public String toString() {
+		return "Turma [nome=" + nome + "]";
+	}
+METODOS GETTERS E SETTERS OMITIDOS...
+}
+
+SERIALIZACAOTEST.JAVA:
+
+public static void main(String[] args) {
+	gravadorObjeto();
+	leitorObjeto();
+}
+
+private static void gravadorObjeto() { //Serializando!!
+	Turma t = new Turma("Maratona Java");
+	Aluno aluno = new Aluno(1L, "Jesse", "123456");
+	aluno.setTurma(t);
+	try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:\\projeto_java\\exercicios\\src\\aluno.ser"))) {
+		//FileOutputStream fos = new FileOutputStream("C:\\projeto_java\\exercicios\\src\\aluno.ser");
+		//ObjectOutputStream oos = new ObjectOutputStream(fos); //Como é uma serializacao de objetos, será Object... Salvando objetos num arquivo!!
+		oos.writeObject(aluno);
+	} catch(IOException e) {
+		e.printStackTrace();
+	}
+}
+	
+private static void leitorObjeto() { //Deserializando!!
+	try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:\\projeto_java\\exercicios\\src\\aluno.ser"))) {
+		Aluno aluno = (Aluno) ois.readObject(); //retorna um objeto da classe Object, por isso que usei o Cast para converter em uma classe Aluno!
+		System.out.println(aluno);
+	} catch(IOException | ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+}

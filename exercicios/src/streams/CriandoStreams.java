@@ -12,6 +12,7 @@ public class CriandoStreams {
 		Consumer<String> print = System.out::print;
 		
 		Stream<String> langs = Stream.of("Java ", " Lua ", "JS\n"); //criando uma Stream de Strings
+		
 		langs.forEach(print);
 		
 		String[] maisLangs = {"Python ", "Lisp ", "Perl ", "Go\n"}; 
